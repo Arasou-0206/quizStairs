@@ -2,7 +2,7 @@ Stairs s;
 Quiz q;
 int goal = 0;
 PFont font;
-
+//setup
 void setup(){
   size(700, 500);
   font = createFont("myFont.vlw", 64);
