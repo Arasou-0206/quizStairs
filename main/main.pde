@@ -4,7 +4,7 @@ int goal = 0;
 PFont font;
 
 void setup(){
-  size(600, 500);
+  size(700, 500);
   font = createFont("myFont.vlw", 64);
   textFont(font);
   textAlign(LEFT, TOP);
