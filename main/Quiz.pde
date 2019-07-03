@@ -5,7 +5,7 @@ class Quiz {
     textSize(24);
     text("制限時間: 30 seconds", width/2, 24);
     textSize(40);
-    text("ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("もんじゅは実は人間ではない?", 0, height/3);
     
     textSize(80);
     fill(255, 0, 0);
