@@ -1,6 +1,7 @@
 Stairs s;
 Quiz q;
-int goal = 0, gt = 0, n = 0;
+int goal = 0, gt = 0;
+int n = 0; //何段階段を登っているか
 PFont font;
 
 void setup(){
