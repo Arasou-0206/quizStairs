@@ -9,6 +9,9 @@ PFont font;
 int quizLimit = 10;//制限時間
 int delay = 2;
 
+int trueButton = 0;//○ボタン
+int falseButton = 0;//☓ボタン
+
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);

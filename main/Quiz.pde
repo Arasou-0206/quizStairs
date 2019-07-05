@@ -7,7 +7,6 @@ class Quiz {
   }
 
   void button() {
-    int mc = 1;
     rectMode(CENTER);
     ellipseMode(CENTER);
     noStroke();
@@ -23,7 +22,7 @@ class Quiz {
     ellipse(width * 5/6, height * 4/5 - 25, 150, 50);
     
     //○ボタン
-    if(mc == 1){
+    if(trueButton == 1){
       fill(150);
       ellipse(width / 6, height * 4/5 - 25,75,25);
     }else{
@@ -32,6 +31,17 @@ class Quiz {
       rect(width / 6, height * 4/5 - 30, 75, 25);
       fill(150);
       ellipse(width / 6, height * 4/5 - 43,75,25);
+    }
+    //☓ボタン
+    if(trueButton == 1){
+      fill(150);
+      ellipse(width *5/ 6, height * 4/5 - 25,75,25);
+    }else{
+      fill(0);
+      ellipse(width *5/ 6, height * 4/5 - 25/2 -5,75,25);
+      rect(width *5/ 6, height * 4/5 - 30, 75, 25);
+      fill(150);
+      ellipse(width *5/ 6, height * 4/5 - 43,75,25);
     }
   }
 
@@ -75,6 +85,7 @@ class Quiz {
     timer(time);
     textSize(40);
     text("7,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    button();
   }
   void quiz8(int time) {
     timer(time);
