@@ -64,65 +64,91 @@ class Quiz {
     strokeWeight(1);
     rectMode(CORNER);
   }
-
+  void quizWindow(){
+    noStroke();
+    fill(30,0,156);
+    rect(5,5,width - 10, height * 4/5-50);
+    fill(250,225,0);
+    rect(10,height / 3,width - 20, 50);
+  }
   void quiz1(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("1,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("1,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz2(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("2,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("2,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz3(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("3,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("3,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz4(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("4,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("4,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz5(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("5,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("5,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz6(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("6,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("6,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz7(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("7,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("7,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz8(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("8,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("8,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz9(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("9,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("9,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz10(int time) {
     quizTimer(time);
+    quizWindow();
+    fill(0);
     textSize(40);
-    text("10,ヒグラシはカナカナカナと鳴く?", 0, height/3);
+    text("10,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
 }
