@@ -2,12 +2,13 @@ Stairs s;
 Quiz q;
 Scene o;
 
-int goal = 0, game = 0, gateTimer = 0;
-int n = 1; //何段階段を登っているか
+int goal = 0, game = 0, timer = 0;
+int n = 1; //何段目の階段のクイズか
+int n0 = n; //直前のn
 int scene = 0; //シーン切り替え値
 PFont font;
-int quizLimit = 10;//制限時間
-int delay = 2;
+int sec = 15 +1; //制限時間
+int quizLimit = sec;
 
 int trueButton = 0;//○ボタン
 int falseButton = 0;//☓ボタン
@@ -29,15 +30,15 @@ void draw() {
     o.scene(1);
   } else if (scene == 2) {
     s.stairs();
-    s.gate(goal, gateTimer);
+    s.gate(timer);
     if (n > 0 && n <= 10) {
       goal = 0;
       s.player(n);
     } else if (n > 10) {
       goal = 1;
     }
-    time();
     if (game == 1) {
+      time();
       if (n == 1) {
         q.quiz1(quizLimit);
       } else if (n == 2) {
@@ -56,12 +57,12 @@ void draw() {
         q.quiz8(quizLimit);
       } else if (n == 9) {
         q.quiz9(quizLimit);
-      } else {
+      } else if(n == 10){
         q.quiz10(quizLimit);
       }
     }
 
-    gateTimer ++;
+    timer ++;
   } else if (scene == 3) {
     o.scene(3);
   }
@@ -69,20 +70,16 @@ void draw() {
 
 //working command
 void keyPressed() {
-  if (key == 'o') {
-    goal = 1;
-  } else if (key == 'c') {
-    goal = 0;
-  } else if (keyCode == UP) {
+  if (keyCode == UP) {
     n ++;
-    quizLimit = 15;
-    gateTimer = 0;
+    quizLimit = sec;
+    timer = 0;
     trueButton = 0;//○ボタン
     falseButton = 0;//☓ボタン
   } else if (keyCode == DOWN) {
     n --;
-    quizLimit = 15;
-    gateTimer = 0;
+    quizLimit = sec;
+    timer = 0;
     trueButton = 0;//○ボタン
     falseButton = 0;//☓ボタン
   } else if (keyCode == ENTER) {
@@ -117,7 +114,7 @@ void mousePressed(){
 }
 
 void time() {
-  if (gateTimer % 60 == 0) {
+  if (timer % 60 == 0) {
     quizLimit--;
   }
 }

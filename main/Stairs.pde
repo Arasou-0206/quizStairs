@@ -10,16 +10,16 @@ class Stairs {
   float gateX1 = width/2 - len;
   float gateX2 = width/2;
   float gateY = height/8;
-  
+
   float pX = width/2;
   float pY = height-shrinkY/2;
-  
+
   void backDisplay() {
     background(200, 255, 255);
 
     fill(0, 0, 255);
     rect(0, height/3, width, height*2/3);
-    
+
     fill(200, 100, 0);
     ellipse(width/2, height/5, width/2, height/4);
     fill(50, 200, 0);
@@ -34,14 +34,14 @@ class Stairs {
     float rectX = width/3;
     float rectY = height-shrinkY*stages;
     float rectLen = width/3;
-    
+
     fill(150);
     for (int i = 0; i < stages; i++) {
       rect(rectX - shrinkX*i, rectY+shrinkY*i, rectLen + shrinkX*(i*2), rectY);
     }
   }
 
-  void gate(int goal, int gateTimer) {
+  void gate(int gateTimer) {
     if (goal == 1) {
       if (gateX1 > open) {
         if (gateTimer%speed == 0) {
@@ -65,10 +65,11 @@ class Stairs {
     rect(gateX1, gateY, len, height/7);
     rect(gateX2, gateY, len, height/7);
   }
-  
-  void player(int n){
+
+  void player(int n) {
+    float playerY = pY-shrinkY*(n-1);
     fill(255, 0, 0);
-    ellipse(pX, pY-shrinkY*(n-1), 30, 50);
+    ellipse(pX, playerY, 30, 50);
     textSize(20);
     text(n + "段目", width/6, height/4);
   }

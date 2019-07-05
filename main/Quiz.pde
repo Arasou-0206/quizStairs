@@ -1,5 +1,5 @@
 class Quiz {
-  void timer(int t) {
+  void quizTimer(int t) {
     background(255);
     fill(0);
     textSize(24);
@@ -64,61 +64,61 @@ class Quiz {
   }
 
   void quiz1(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("1,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz2(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("2,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz3(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("3,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz4(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("4,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz5(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("5,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz6(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("6,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz7(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("7,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz8(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("8,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz9(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("9,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
   }
   void quiz10(int time) {
-    timer(time);
+    quizTimer(time);
     textSize(40);
     text("10,ヒグラシはカナカナカナと鳴く?", 0, height/3);
     button();
