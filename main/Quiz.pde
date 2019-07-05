@@ -8,7 +8,6 @@ class Quiz {
 
   void button() {
     rectMode(CENTER);
-    ellipseMode(CENTER);
     noStroke();
     
     //土台
@@ -61,6 +60,9 @@ class Quiz {
       line(width *5/6 - 33, height * 4/5 - 50,width *5/6 + 30, height * 4/5 - 36);
       line(width *5/6 - 33 + 65,height * 4/5-50, width *5/6 + 30 - 65, height * 4/5-36);
     }
+    stroke(0);
+    strokeWeight(1);
+    rectMode(CORNER);
   }
 
   void quiz1(int time) {
