@@ -15,6 +15,7 @@ class Quiz {
     fill(255, 0, 0);
     ellipse(width / 6, height * 4/5, 150, 50);
     rect(width / 6, height * 4/5 - 25/ 2, 150, 25);
+    fill(0,0,255);
     ellipse(width * 5/6, height * 4/5, 150, 50);
     rect(width * 5/6, height * 4/5 - 25/2, 150, 25);
     fill(250, 255, 0);
@@ -25,24 +26,40 @@ class Quiz {
     if(trueButton == 1){
       fill(150);
       ellipse(width / 6, height * 4/5 - 25,75,25);
+      fill(255,0,0);
+      ellipse(width / 6, height * 4/5 - 25,65,15);
+      fill(200);
+      ellipse(width / 6, height * 4/5 - 25,60,10);
     }else{
       fill(0);
       ellipse(width / 6, height * 4/5 - 25/2 -5,75,25);
       rect(width / 6, height * 4/5 - 30, 75, 25);
-      fill(150);
+      fill(200);
       ellipse(width / 6, height * 4/5 - 43,75,25);
+      fill(255,0,0);
+      ellipse(width / 6, height * 4/5 - 43,65,15);  
+      fill(200);
+      ellipse(width / 6, height * 4/5 - 43,60,10);
     }
     
     //☓ボタン
     if(falseButton == 1){
       fill(150);
       ellipse(width *5/6, height * 4/5 - 25,75,25);
+      stroke(0,0,255);
+      strokeWeight(3);
+      line(width *5/6 - 33, height * 4/5 - 30,width *5/6 + 30, height * 4/5 - 30 + 10);
+      line(width *5/6 - 33 + 65,height * 4/5 - 30, width *5/6 + 30 - 65, height * 4/5 - 30 + 10);
     }else{
       fill(0);
       ellipse(width *5/6, height * 4/5 - 25/2 -5,75,25);
       rect(width *5/6, height * 4/5 - 30, 75, 25);
-      fill(150);
+      fill(200);
       ellipse(width *5/6, height * 4/5 - 43,75,25);
+      stroke(0,0,255);
+      strokeWeight(3);
+      line(width *5/6 - 33, height * 4/5 - 50,width *5/6 + 30, height * 4/5 - 36);
+      line(width *5/6 - 33 + 65,height * 4/5-50, width *5/6 + 30 - 65, height * 4/5-36);
     }
   }
 
