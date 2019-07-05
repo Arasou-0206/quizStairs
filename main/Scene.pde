@@ -28,6 +28,7 @@ class Scene{
     }else if(s == 3){
       fill(0);
       y -=5;
+      textSize(30);
       text("Thank you for the praying!!",x,y);
     }
   }
