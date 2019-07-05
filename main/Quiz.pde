@@ -24,11 +24,14 @@ class Quiz {
     
     //○ボタン
     if(mc == 1){
-      fill(0);
+      fill(150);
       ellipse(width / 6, height * 4/5 - 25,75,25);
     }else{
       fill(0);
-      ellipse(width / 6, height * 4/5 - 25,75,25);
+      ellipse(width / 6, height * 4/5 - 25/2 -5,75,25);
+      rect(width / 6, height * 4/5 - 30, 75, 25);
+      fill(150);
+      ellipse(width / 6, height * 4/5 - 43,75,25);
     }
   }
 
