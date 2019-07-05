@@ -32,16 +32,17 @@ class Quiz {
       fill(150);
       ellipse(width / 6, height * 4/5 - 43,75,25);
     }
+    
     //☓ボタン
-    if(trueButton == 1){
+    if(falseButton == 1){
       fill(150);
-      ellipse(width *5/ 6, height * 4/5 - 25,75,25);
+      ellipse(width *5/6, height * 4/5 - 25,75,25);
     }else{
       fill(0);
-      ellipse(width *5/ 6, height * 4/5 - 25/2 -5,75,25);
-      rect(width *5/ 6, height * 4/5 - 30, 75, 25);
+      ellipse(width *5/6, height * 4/5 - 25/2 -5,75,25);
+      rect(width *5/6, height * 4/5 - 30, 75, 25);
       fill(150);
-      ellipse(width *5/ 6, height * 4/5 - 43,75,25);
+      ellipse(width *5/6, height * 4/5 - 43,75,25);
     }
   }
 

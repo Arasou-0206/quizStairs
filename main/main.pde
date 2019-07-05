@@ -77,10 +77,14 @@ void keyPressed() {
     n ++;
     quizLimit = 15;
     gateTimer = 0;
+    trueButton = 0;//○ボタン
+    falseButton = 0;//☓ボタン
   } else if (keyCode == DOWN) {
     n --;
     quizLimit = 15;
     gateTimer = 0;
+    trueButton = 0;//○ボタン
+    falseButton = 0;//☓ボタン
   } else if (key == 'g') {
     if (scene < 3) {
       scene ++;
@@ -93,6 +97,22 @@ void keyPressed() {
     game = 1;
   } else if (key == 'q') {
     game = 0;
+  }
+}
+
+void mousePressed(){
+  int w = 75, h = 50;
+  int tx = width/6 - w/2, ty = height * 4/5 - 25 - w/2;
+  int fx = width *5/6 - h/2, fy = height * 4/5 - 25/2 -5 - h/2;
+  if((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)){
+    trueButton = 1;
+    falseButton = 0;
+  }else if((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)){
+    trueButton = 0;
+    falseButton = 1;
+  }else{
+    trueButton = 0;
+    falseButton = 0;
   }
 }
 
