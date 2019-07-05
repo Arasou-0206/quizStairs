@@ -68,8 +68,8 @@ class Stairs {
   
   void player(int n){
     fill(255, 0, 0);
-    ellipse(pX, pY-shrinkY*n, 30, 50);
+    ellipse(pX, pY-shrinkY*(n-1), 30, 50);
     textSize(20);
-    text((n+1) + "段目", width/6, height/4);
+    text(n + "段目", width/6, height/4);
   }
 }
