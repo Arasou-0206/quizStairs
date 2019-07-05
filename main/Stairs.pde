@@ -1,6 +1,5 @@
 class Stairs {
   int stages = 10;
-  int speed = 5;
   float shrinkX = (width/3)/stages;
   float shrinkY = (height*3/4)/stages;
 
@@ -11,8 +10,9 @@ class Stairs {
   float gateX2 = width/2;
   float gateY = height/8;
 
-  float pX = width/2;
   float pY = height-shrinkY/2;
+  float playerX = width/2, playerY1 = pY-shrinkY*(n0-1), playerY2;
+
 
   void backDisplay() {
     background(200, 255, 255);
@@ -42,16 +42,17 @@ class Stairs {
   }
 
   void gate(int gateTimer) {
+    int gSpeed = 5;
     if (goal == 1) {
       if (gateX1 > open) {
-        if (gateTimer%speed == 0) {
+        if (gateTimer%gSpeed == 0) {
           gateX1 --;
           gateX2 ++;
         }
       }
     } else if (goal == 0) {
       if (gateX1 < close) {
-        if (gateTimer%speed == 0) {
+        if (gateTimer%gSpeed == 0) {
           gateX1 ++;
           gateX2 --;
         }
@@ -66,11 +67,32 @@ class Stairs {
     rect(gateX2, gateY, len, height/7);
   }
 
-  void player(int n) {
-    float playerY = pY-shrinkY*(n-1);
+  void player() {
+    int pSpeed = 3;
+    playerY2 = pY-shrinkY*(n-1);
+
     fill(255, 0, 0);
-    ellipse(pX, playerY, 30, 50);
     textSize(20);
-    text(n + "段目", width/6, height/4);
+    if (n <= 10) {
+      text(int(n) + "段目", width/6, height/4);
+    } else if (n == 11) {
+      text("クイズの都へようこそ", width/3, 30);
+    }
+    if (playerY1 < playerY2) {
+      fill(100, 0, 200);
+      if (timer%pSpeed == 0) playerY1 ++;
+    } else if (playerY1 > playerY2) {
+      fill(255, 150, 255);
+      if (timer%pSpeed == 0) playerY1 --;
+    }
+    ellipse(playerX, playerY1, 30, 50);
+    ending();
+  }
+
+  void ending() {
+    float end = pY-shrinkY*(10);
+    if (playerY1 <= end) {
+      scene ++;
+    }
   }
 }

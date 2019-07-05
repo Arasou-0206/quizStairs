@@ -3,11 +3,11 @@ Quiz q;
 Scene o;
 
 int goal = 0, game = 0, timer = 0;
-int n = 1; //何段目の階段のクイズか
-int n0 = n; //直前のn
+float n = 1; //何段目の階段のクイズか
+float n0 = n; //直前のn
 int scene = 0; //シーン切り替え値
 PFont font;
-int sec = 15 +1; //制限時間
+int sec = 3; //制限時間
 int quizLimit = sec;
 
 int trueButton = 0;//○ボタン
@@ -29,15 +29,16 @@ void draw() {
   } else if (scene == 1) {
     o.scene(1);
   } else if (scene == 2) {
-    s.stairs();
-    s.gate(timer);
-    if (n > 0 && n <= 10) {
-      goal = 0;
-      s.player(n);
-    } else if (n > 10) {
-      goal = 1;
-    }
-    if (game == 1) {
+    if (game == 0 && n > 0) {
+      s.stairs();
+      s.gate(timer);
+      s.player();
+      if (n > 0 && n <= 10) {
+        goal = 0;
+      } else if (n == 11) {
+        goal = 1;
+      }
+    } else if (game == 1) {
       time();
       if (n == 1) {
         q.quiz1(quizLimit);
@@ -57,7 +58,7 @@ void draw() {
         q.quiz8(quizLimit);
       } else if (n == 9) {
         q.quiz9(quizLimit);
-      } else if(n == 10){
+      } else if (n == 10) {
         q.quiz10(quizLimit);
       }
     }
@@ -72,13 +73,11 @@ void draw() {
 void keyPressed() {
   if (keyCode == UP) {
     n ++;
-    quizLimit = sec;
     timer = 0;
     trueButton = 0;//○ボタン
     falseButton = 0;//☓ボタン
   } else if (keyCode == DOWN) {
     n --;
-    quizLimit = sec;
     timer = 0;
     trueButton = 0;//○ボタン
     falseButton = 0;//☓ボタン
@@ -86,35 +85,43 @@ void keyPressed() {
     if (scene < 3) {
       scene ++;
     }
-  }else if(key == 'G'){
-    if(scene > 0){
+  } else if (key == 'G') {
+    if (scene > 0) {
       scene --;
     }
   } else if (key == 'Q') {
     game = 1;
+    quizLimit = sec;
   } else if (key == 'q') {
     game = 0;
   }
 }
 
-void mousePressed(){
+void mousePressed() {
   int w = 75, h = 50;
   int tx = width/6 - w/2, ty = height * 4/5 - 25 - w/2;
   int fx = width *5/6 - h/2, fy = height * 4/5 - 25/2 -5 - h/2;
-  if((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)){
+  if ((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)) {
     trueButton = 1;
     falseButton = 0;
-  }else if((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)){
+  } else if ((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)) {
     trueButton = 0;
     falseButton = 1;
-  }else{
+  } else {
     trueButton = 0;
     falseButton = 0;
   }
 }
 
 void time() {
-  if (timer % 60 == 0) {
-    quizLimit--;
+  if (game == 1) {
+    if (timer % 60 == 0) {
+      quizLimit--;
+    }
+    if (quizLimit <= 0) {
+      game = 0;
+      n --;
+      quizLimit = sec;
+    }
   }
 }
