@@ -85,7 +85,7 @@ void keyPressed() {
     gateTimer = 0;
     trueButton = 0;//○ボタン
     falseButton = 0;//☓ボタン
-  } else if (key == 'g') {
+  } else if (keyCode == ENTER) {
     if (scene < 3) {
       scene ++;
     }
@@ -93,7 +93,7 @@ void keyPressed() {
     if(scene > 0){
       scene --;
     }
-  } else if (keyCode == ENTER) {
+  } else if (key == 'Q') {
     game = 1;
   } else if (key == 'q') {
     game = 0;
@@ -119,8 +119,5 @@ void mousePressed(){
 void time() {
   if (gateTimer % 60 == 0) {
     quizLimit--;
-  }
-  if ((keyPressed == true) && (key == 't')) {
-    quizLimit = 30;
   }
 }
