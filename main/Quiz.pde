@@ -1,6 +1,8 @@
 class Quiz {
+  
+  int flag;
+  
   void quizTimer(int t) {
-    background(255);
     fill(0);
     textSize(24);
     text("制限時間:" + t + "seconds", width/2, 24);
@@ -29,6 +31,7 @@ class Quiz {
       ellipse(width / 6, height * 4/5 - 25,65,15);
       fill(200);
       ellipse(width / 6, height * 4/5 - 25,60,10);
+      flag = 1;
     }else{
       fill(0);
       ellipse(width / 6, height * 4/5 - 25/2 -5,75,25);
@@ -49,6 +52,7 @@ class Quiz {
       strokeWeight(3);
       line(width *5/6 - 33, height * 4/5 - 30,width *5/6 + 30, height * 4/5 - 30 + 10);
       line(width *5/6 - 33 + 65,height * 4/5 - 30, width *5/6 + 30 - 65, height * 4/5 - 30 + 10);
+      flag = 0;
     }else{
       fill(0);
       ellipse(width *5/6, height * 4/5 - 25/2 -5,75,25);
@@ -65,6 +69,7 @@ class Quiz {
     rectMode(CORNER);
   }
   void quizWindow(){
+    background(255);
     noStroke();
     fill(30,0,156);
     rect(5,5,width - 10, height * 4/5-50);
@@ -72,80 +77,85 @@ class Quiz {
     rect(10,height / 3,width - 20, 50);
   }
   void quiz1(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("1,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    /*if(flag == 1){
+      n++;
+    }else{
+      n--;
+    }*/
   }
   void quiz2(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("2,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz3(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("3,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz4(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("4,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz5(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("5,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz6(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("6,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz7(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("7,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz8(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("8,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz9(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("9,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
   }
   void quiz10(int time) {
-    quizTimer(time);
     quizWindow();
+    quizTimer(time);
     fill(0);
     textSize(40);
     text("10,ヒグラシはカナカナカナと鳴く?", 30, height/3);

@@ -7,7 +7,7 @@ float n = 1; //何段目の階段のクイズか
 float n0 = n; //直前のn
 int scene = 0; //シーン切り替え値
 PFont font;
-int sec = 3; //制限時間
+int sec = 10; //制限時間
 int quizLimit = sec;
 
 int trueButton = 0;//○ボタン
