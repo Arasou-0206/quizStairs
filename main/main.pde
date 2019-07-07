@@ -81,8 +81,6 @@ void keyPressed() {
     } else if (scene == 2) {
       if (game == 0) {
         game = 1;
-      } else if (game == 1) {
-        game = 0;
       }
     }
     if (scene == 2 && n == 0) {
