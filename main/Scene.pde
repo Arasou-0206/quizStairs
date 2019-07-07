@@ -1,6 +1,6 @@
 class Scene{
   int data[] = null;
-  int x = 150,y = 750;
+  int x = 150, y = 750, y0 = 750;
   int mcnt = 0;
   void scene(int s){
     background(255);
@@ -24,12 +24,17 @@ class Scene{
         text("'g' keyでスタート ",230,420);
       }
     }else if(s == 2){
-      //gamepraying
+      //game playing
     }else if(s == 3){
       fill(0);
-      y -=5;
+      y -= 3;
       textSize(30);
       text("Thank you for the praying!!",x,y);
+      if(y < 0) y = y0;
+    }else if(s == 4){
+      textSize(30);
+      fill(255, 100, 50);
+      text("残念！再挑戦するにはENTERを押してね♡", 0, height/2);
     }
   }
 }

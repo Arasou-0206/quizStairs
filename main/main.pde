@@ -40,7 +40,9 @@ void draw() {
       }
     } else if (game == 1) {
       time();
-      if (n == 1) {
+      if (n == 0) {
+        o.scene(4);
+      } else if (n == 1) {
         q.quiz1(quizLimit);
       } else if (n == 2) {
         q.quiz2(quizLimit);
@@ -69,8 +71,28 @@ void draw() {
   }
 }
 
-//working command
 void keyPressed() {
+  //main command
+  if (keyCode == ENTER) {
+    if (scene == 0) {
+      scene = 1;
+    } else if (scene == 1) {
+      scene = 2;
+    } else if (scene == 2) {
+      if (game == 0) {
+        game = 1;
+      } else if (game == 1) {
+        game = 0;
+      }
+    }
+    if (scene == 2 && n == 0) {
+      n = 1;
+      game = 0;
+      scene = 0;
+    }
+  }
+
+  //working command
   if (keyCode == UP) {
     n ++;
     timer = 0;
@@ -81,10 +103,6 @@ void keyPressed() {
     timer = 0;
     trueButton = 0;//○ボタン
     falseButton = 0;//☓ボタン
-  } else if (keyCode == ENTER) {
-    if (scene < 3) {
-      scene ++;
-    }
   } else if (key == 'G') {
     if (scene > 0) {
       scene --;
