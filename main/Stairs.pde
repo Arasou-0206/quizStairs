@@ -80,7 +80,7 @@ class Stairs {
     }
     if (playerY1 < playerY2) {
       fill(100, 0, 200);
-      if (timer%pSpeed == 0) playerY1 ++;
+      if (timer%pSpeed == 0) playerY1 += 3;
     } else if (playerY1 > playerY2) {
       fill(255, 150, 255);
       if (timer%pSpeed == 0) playerY1 --;

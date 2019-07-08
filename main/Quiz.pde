@@ -11,6 +11,7 @@ class Quiz {
   void button() {
     rectMode(CENTER);
     noStroke();
+    flag = -1;
     
     //土台
     fill(255, 0, 0);
@@ -76,89 +77,164 @@ class Quiz {
     fill(250,225,0);
     rect(10,height / 3,width - 20, 50);
   }
-  void quiz1(int time) {
+  int quiz1(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("1,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
-    /*if(flag == 1){
-      n++;
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
     }else{
-      n--;
-    }*/
+      return -1;
+    }
   }
-  void quiz2(int time) {
+  int quiz2(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("2,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
-  }
-  void quiz3(int time) {
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
+  }  
+  int quiz3(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("3,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz4(int time) {
+  int quiz4(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("4,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz5(int time) {
+  int quiz5(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("5,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz6(int time) {
+  int quiz6(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("6,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz7(int time) {
+  int quiz7(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("7,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz8(int time) {
+  int quiz8(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("8,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz9(int time) {
+  int quiz9(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("9,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
-  void quiz10(int time) {
+  int quiz10(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
     text("10,ヒグラシはカナカナカナと鳴く?", 30, height/3);
     button();
+    
+    if(flag == 0){
+      return 0;
+    }else if(flag == 1){
+      return 1;
+    }else{
+      return -1;
+    }
   }
 }

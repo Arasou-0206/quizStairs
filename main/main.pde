@@ -7,11 +7,12 @@ float n = 1; //何段目の階段のクイズか
 float n0 = n; //直前のn
 int scene = 0; //シーン切り替え値
 PFont font;
-int sec = 10; //制限時間
+int sec = 3; //制限時間
 int quizLimit = sec;
 
 int trueButton = 0;//○ボタン
 int falseButton = 0;//☓ボタン
+int judge;
 
 void setup() {
   size(700, 500);
@@ -40,32 +41,32 @@ void draw() {
       }
     } else if (game == 1) {
       time();
+      judge = -1;
       if (n == 0) {
         o.scene(4);
       } else if (n == 1) {
-        q.quiz1(quizLimit);
+        judge = q.quiz1(quizLimit);
       } else if (n == 2) {
-        q.quiz2(quizLimit);
+        judge = q.quiz2(quizLimit);
       } else if (n == 3) {
-        q.quiz3(quizLimit);
+        judge = q.quiz3(quizLimit);
       } else if (n == 4) {
-        q.quiz4(quizLimit);
+        judge = q.quiz4(quizLimit);
       } else if (n == 5) {
-        q.quiz5(quizLimit);
+        judge = q.quiz5(quizLimit);
       } else if (n == 6) {
-        q.quiz6(quizLimit);
+        judge = q.quiz6(quizLimit);
       } else if (n == 7) {
-        q.quiz7(quizLimit);
+        judge = q.quiz7(quizLimit);
       } else if (n == 8) {
-        q.quiz8(quizLimit);
+        judge = q.quiz8(quizLimit);
       } else if (n == 9) {
-        q.quiz9(quizLimit);
+        judge = q.quiz9(quizLimit);
       } else if (n == 10) {
-        q.quiz10(quizLimit);
+        judge = q.quiz10(quizLimit);
       }
+      action();
     }
-
-    timer ++;
   } else if (scene == 3) {
     o.scene(3);
   }
@@ -82,6 +83,10 @@ void keyPressed() {
       if (game == 0) {
         game = 1;
       }
+    } else if (scene == 3) {
+      n = 1;
+      game = 0;
+      scene = 0;
     }
     if (scene == 2 && n == 0) {
       n = 1;
@@ -93,21 +98,16 @@ void keyPressed() {
   //working command
   if (keyCode == UP) {
     n ++;
-    timer = 0;
-    trueButton = 0;//○ボタン
-    falseButton = 0;//☓ボタン
+    reset();
   } else if (keyCode == DOWN) {
     n --;
-    timer = 0;
-    trueButton = 0;//○ボタン
-    falseButton = 0;//☓ボタン
+    reset();
   } else if (key == 'G') {
     if (scene > 0) {
       scene --;
     }
   } else if (key == 'Q') {
     game = 1;
-    quizLimit = sec;
   } else if (key == 'q') {
     game = 0;
   }
@@ -130,6 +130,7 @@ void mousePressed() {
 }
 
 void time() {
+  timer ++;
   if (game == 1) {
     if (timer % 60 == 0) {
       quizLimit--;
@@ -137,7 +138,29 @@ void time() {
     if (quizLimit <= 0) {
       game = 0;
       n --;
-      quizLimit = sec;
+      reset();
     }
   }
+}
+
+void action() {
+  if (judge == 0) {
+    game = 0;
+    n --;
+    reset();
+    if (n == 0) {
+      o.scene(4);
+    }
+  } else if (judge == 1) {
+    game = 0;
+    n ++;
+    reset();
+  }
+}
+
+void reset() {
+  timer = 0;
+  trueButton = 0;//○ボタン
+  falseButton = 0;//☓ボタン
+  quizLimit = sec;
 }
