@@ -15,9 +15,9 @@ int falseButton = 0;//☓ボタン
 int judge;
 
 String data[] = null;//データ読み込み
-String question[] = null;//クイズ問題格納
+String[] question;//クイズ問題格納
 int quesTime = 0;
-String answer[] = null;//正誤格納
+String[] answer;//正誤格納
 int ansTime = 0;
 
 void setup() {
@@ -28,12 +28,15 @@ void setup() {
   o = new Scene();
   s = new Stairs();
   q = new Quiz();
+  
+  //データの読み込み
   data = loadStrings("quiz.txt");
   if(data == null){
     print("開発者に問い合わせてください");
     exit();
   }
-  
+  question = new String[data.length / 2];
+  answer   = new String[data.length / 2];
   for(int i = 0;i < data.length;i++){
     if(i % 2 == 0){
       answer[ansTime] = data[i];
@@ -45,6 +48,8 @@ void setup() {
       quesTime++;
     }
   }
+  //ここまで
+  
 }
 
 void draw() {
