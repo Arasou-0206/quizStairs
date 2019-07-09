@@ -40,11 +40,11 @@ void setup() {
   for(int i = 0;i < data.length;i++){
     if(i % 2 == 0){
       question[ansTime] = data[i];
-      println(question[quesTime]);
+      //println(question[quesTime]);
       quesTime++;
     }else{
       answer[ansTime] = int(data[i]);
-      println(answer[ansTime]);
+      //println(answer[ansTime]);
       ansTime++;
     }
   }

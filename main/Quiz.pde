@@ -86,9 +86,9 @@ class Quiz {
     button();
 
     if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
       return 1;
+    } else if (flag != answer[0] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -101,10 +101,10 @@ class Quiz {
     text(question[1], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[1]) {
       return 1;
+    } else if (flag != answer[1] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -117,10 +117,10 @@ class Quiz {
     text("3" + question[2], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[2]) {
       return 1;
+    } else if (flag != answer[2] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -133,10 +133,10 @@ class Quiz {
     text("4" + question[3], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[3]) {
       return 1;
+    } else if (flag != answer[3] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -149,10 +149,10 @@ class Quiz {
     text("5" + question[4], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[4]) {
       return 1;
+    } else if (flag != answer[4] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -165,10 +165,10 @@ class Quiz {
     text("6" + question[5], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[5]) {
       return 1;
+    } else if (flag != answer[5] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -181,10 +181,10 @@ class Quiz {
     text("7" + question[6], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[6]) {
       return 1;
+    } else if (flag != answer[6] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -197,10 +197,10 @@ class Quiz {
     text("8" + question[7], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[7]) {
       return 1;
+    } else if (flag != answer[7] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -213,10 +213,10 @@ class Quiz {
     text("9" + question[8], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[8]) {
       return 1;
+    } else if (flag != answer[8] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
@@ -229,10 +229,10 @@ class Quiz {
     text("10" + question[9], 30, height/3);
     button();
 
-    if (flag == answer[0]) {
-      return 0;
-    } else if (flag != answer[0] && flag != -1) {
+    if (flag == answer[9]) {
       return 1;
+    } else if (flag != answer[9] && flag != -1) {
+      return 0;
     } else {
       return -1;
     }
