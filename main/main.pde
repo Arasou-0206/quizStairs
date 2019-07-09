@@ -14,6 +14,12 @@ int trueButton = 0;//○ボタン
 int falseButton = 0;//☓ボタン
 int judge;
 
+String data[] = null;//データ読み込み
+String question[] = null;//クイズ問題格納
+int quesTime = 0;
+String answer[] = null;//正誤格納
+int ansTime = 0;
+
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);
@@ -22,6 +28,23 @@ void setup() {
   o = new Scene();
   s = new Stairs();
   q = new Quiz();
+  data = loadStrings("quiz.txt");
+  if(data == null){
+    print("開発者に問い合わせてください");
+    exit();
+  }
+  
+  for(int i = 0;i < data.length;i++){
+    if(i % 2 == 0){
+      answer[ansTime] = data[i];
+      println(answer[ansTime]);
+      ansTime++;
+    }else{
+      question[quesTime] = data[i];
+      println(question[quesTime]);
+      quesTime++;
+    }
+  }
 }
 
 void draw() {
