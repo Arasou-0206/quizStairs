@@ -1,7 +1,7 @@
 class Quiz {
-  
+
   int flag;
-  
+
   void quizTimer(int t) {
     fill(0);
     textSize(24);
@@ -12,84 +12,84 @@ class Quiz {
     rectMode(CENTER);
     noStroke();
     flag = -1;
-    
+
     //土台
     fill(255, 0, 0);
     ellipse(width / 6, height * 4/5, 150, 50);
     rect(width / 6, height * 4/5 - 25/ 2, 150, 25);
-    fill(0,0,255);
+    fill(0, 0, 255);
     ellipse(width * 5/6, height * 4/5, 150, 50);
     rect(width * 5/6, height * 4/5 - 25/2, 150, 25);
     fill(250, 255, 0);
     ellipse(width / 6, height * 4/5 - 25, 150, 50);
     ellipse(width * 5/6, height * 4/5 - 25, 150, 50);
-    
+
     //○ボタン
-    if(trueButton == 1){
+    if (trueButton == 1) {
       fill(150);
-      ellipse(width / 6, height * 4/5 - 25,75,25);
-      fill(255,0,0);
-      ellipse(width / 6, height * 4/5 - 25,65,15);
+      ellipse(width / 6, height * 4/5 - 25, 75, 25);
+      fill(255, 0, 0);
+      ellipse(width / 6, height * 4/5 - 25, 65, 15);
       fill(200);
-      ellipse(width / 6, height * 4/5 - 25,60,10);
+      ellipse(width / 6, height * 4/5 - 25, 60, 10);
       flag = 1;
-    }else{
+    } else {
       fill(0);
-      ellipse(width / 6, height * 4/5 - 25/2 -5,75,25);
+      ellipse(width / 6, height * 4/5 - 25/2 -5, 75, 25);
       rect(width / 6, height * 4/5 - 30, 75, 25);
       fill(200);
-      ellipse(width / 6, height * 4/5 - 43,75,25);
-      fill(255,0,0);
-      ellipse(width / 6, height * 4/5 - 43,65,15);  
+      ellipse(width / 6, height * 4/5 - 43, 75, 25);
+      fill(255, 0, 0);
+      ellipse(width / 6, height * 4/5 - 43, 65, 15);  
       fill(200);
-      ellipse(width / 6, height * 4/5 - 43,60,10);
+      ellipse(width / 6, height * 4/5 - 43, 60, 10);
     }
-    
+
     //☓ボタン
-    if(falseButton == 1){
+    if (falseButton == 1) {
       fill(150);
-      ellipse(width *5/6, height * 4/5 - 25,75,25);
-      stroke(0,0,255);
+      ellipse(width *5/6, height * 4/5 - 25, 75, 25);
+      stroke(0, 0, 255);
       strokeWeight(3);
-      line(width *5/6 - 33, height * 4/5 - 30,width *5/6 + 30, height * 4/5 - 30 + 10);
-      line(width *5/6 - 33 + 65,height * 4/5 - 30, width *5/6 + 30 - 65, height * 4/5 - 30 + 10);
+      line(width *5/6 - 33, height * 4/5 - 30, width *5/6 + 30, height * 4/5 - 30 + 10);
+      line(width *5/6 - 33 + 65, height * 4/5 - 30, width *5/6 + 30 - 65, height * 4/5 - 30 + 10);
       flag = 0;
-    }else{
+    } else {
       fill(0);
-      ellipse(width *5/6, height * 4/5 - 25/2 -5,75,25);
+      ellipse(width *5/6, height * 4/5 - 25/2 -5, 75, 25);
       rect(width *5/6, height * 4/5 - 30, 75, 25);
       fill(200);
-      ellipse(width *5/6, height * 4/5 - 43,75,25);
-      stroke(0,0,255);
+      ellipse(width *5/6, height * 4/5 - 43, 75, 25);
+      stroke(0, 0, 255);
       strokeWeight(3);
-      line(width *5/6 - 33, height * 4/5 - 50,width *5/6 + 30, height * 4/5 - 36);
-      line(width *5/6 - 33 + 65,height * 4/5-50, width *5/6 + 30 - 65, height * 4/5-36);
+      line(width *5/6 - 33, height * 4/5 - 50, width *5/6 + 30, height * 4/5 - 36);
+      line(width *5/6 - 33 + 65, height * 4/5-50, width *5/6 + 30 - 65, height * 4/5-36);
     }
     stroke(0);
     strokeWeight(1);
     rectMode(CORNER);
   }
-  void quizWindow(){
+  void quizWindow() {
     background(255);
     noStroke();
-    fill(30,0,156);
-    rect(5,5,width - 10, height * 4/5-50);
-    fill(250,225,0);
-    rect(10,height / 3,width - 20, 50);
+    fill(30, 0, 156);
+    rect(5, 5, width - 10, height * 4/5-50);
+    fill(250, 225, 0);
+    rect(10, height / 3, width - 20, 50);
   }
   int quiz1(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("1,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text(question[0], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -98,30 +98,30 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("2,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text(question[1], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
-  }  
+  }
   int quiz3(int time) {
     quizWindow();
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("3,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("3" + question[2], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -130,14 +130,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("4,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("4" + question[3], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -146,14 +146,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("5,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("5" + question[4], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -162,14 +162,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("6,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("6" + question[5], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -178,14 +178,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("7,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("7" + question[6], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -194,14 +194,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("8,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("8" + question[7], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -210,14 +210,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("9,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("9" + question[8], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }
@@ -226,14 +226,14 @@ class Quiz {
     quizTimer(time);
     fill(0);
     textSize(40);
-    text("10,ヒグラシはカナカナカナと鳴く?", 30, height/3);
+    text("10" + question[9], 30, height/3);
     button();
-    
-    if(flag == 0){
+
+    if (flag == answer[0]) {
       return 0;
-    }else if(flag == 1){
+    } else if (flag != answer[0] && flag != -1) {
       return 1;
-    }else{
+    } else {
       return -1;
     }
   }

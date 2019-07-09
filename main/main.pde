@@ -7,7 +7,7 @@ float n = 1; //何段目の階段のクイズか
 float n0 = n; //直前のn
 int scene = 0; //シーン切り替え値
 PFont font;
-int sec = 3; //制限時間
+int sec = 10; //制限時間
 int quizLimit = sec;
 
 int trueButton = 0;//○ボタン
@@ -17,7 +17,7 @@ int judge;
 String data[] = null;//データ読み込み
 String[] question;//クイズ問題格納
 int quesTime = 0;
-String[] answer;//正誤格納
+int[] answer;//正誤格納
 int ansTime = 0;
 
 void setup() {
@@ -36,16 +36,16 @@ void setup() {
     exit();
   }
   question = new String[data.length / 2];
-  answer   = new String[data.length / 2];
+  answer   = new int[data.length / 2];
   for(int i = 0;i < data.length;i++){
     if(i % 2 == 0){
-      answer[ansTime] = data[i];
-      println(answer[ansTime]);
-      ansTime++;
-    }else{
-      question[quesTime] = data[i];
+      question[ansTime] = data[i];
       println(question[quesTime]);
       quesTime++;
+    }else{
+      answer[ansTime] = int(data[i]);
+      println(answer[ansTime]);
+      ansTime++;
     }
   }
   //ここまで
