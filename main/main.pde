@@ -73,10 +73,12 @@ void setup() {
 
 void draw() {
   if (scene == 0) {
-    o.scene(0);
+    o.scene(scene);
   } else if (scene == 1) {
-    o.scene(1);
-  } else if (scene == 2) {
+    o.scene(scene);
+  } else if(scene == 2){
+    o.scene(scene);
+  } else if (scene == 3) {
     if (game == 0 && n > 0) {
       s.stairs();
       s.gate(timer);
@@ -90,7 +92,7 @@ void draw() {
       time();
       judge = -1;
       if (n == 0) {
-        o.scene(4);
+        o.scene(5);
       } else if (n == 1) {
         judge = q.quiz1(quizLimit);
       } else if (n == 2) {
@@ -114,8 +116,8 @@ void draw() {
       }
       action();
     }
-  } else if (scene == 3) {
-    o.scene(3);
+  } else if (scene == 4) {
+    o.scene(4);
   }
 }
 
@@ -127,12 +129,16 @@ void keyPressed() {
     } else if (scene == 1) {
       scene = 2;
     } else if (scene == 2) {
+      scene = 3;
+    } else if (scene == 3) {
       if (game == 0) {
         game = 1;
       }
-    } else if (scene == 3) {
+    } else if (scene == 4) {
       n = 1;
       game = 0;
+      scene = 0;
+    } else if (scene == 5){
       scene = 0;
     }
     if (scene == 2 && n == 0) {
@@ -196,7 +202,8 @@ void action() {
     n -= int(random(1, n));
     reset();
     if (n == 0) {
-      o.scene(4);
+      scene = 5;
+      o.scene(scene);
     }
   } else if (judge == 1) {
     game = 0;

@@ -92,7 +92,7 @@ class Stairs {
   void ending() {
     float end = pY-shrinkY*(10);
     if (playerY1 <= end) {
-      scene = 3;
+      scene = 4;
     }
   }
 }
