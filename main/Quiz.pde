@@ -81,6 +81,25 @@ class Quiz {
     strokeWeight(1);
     rectMode(CORNER);
   }
+
+  void isButtonPushed() {
+    if (isPush == 0) {
+      int w = 75, h = 50;
+      int tx = width/6 - w/2, ty = height * 4/5 - 25 - w/2;
+      int fx = width *5/6 - h/2, fy = height * 4/5 - 25/2 -5 - h/2;
+      if ((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)) {
+        trueButton = 1;
+        falseButton = 0;
+      } else if ((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)) {
+        trueButton = 0;
+        falseButton = 1;
+      } else {
+        trueButton = 0;
+        falseButton = 0;
+      }
+    }
+  }
+
   void quizWindow() {
     background(255);
     noStroke();
@@ -96,9 +115,9 @@ class Quiz {
     if (s < 15) {
       textSize(50 - s);
     } else {
-      textSize(40 - s);
+      textSize(45 - s);
     }
-    text("1" + question[num[qCount]], 30, height/3);
+    text(int(n) + ":" + question[num[qCount]], 30, height/3);
   }
   int quiz1(int time) {
     quizWindow();

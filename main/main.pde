@@ -13,6 +13,7 @@ int quizLimit = sec;
 int trueButton = 0;//○ボタン
 int falseButton = 0;//☓ボタン
 int judge;
+int done = 0, isPush = 0; //押せるか押せないか
 
 String data[] = null;//データ読み込み
 String[] question;//クイズ問題格納
@@ -20,8 +21,8 @@ int quesTime = 0;
 int[] answer;//正誤格納
 int ansTime = 0;
 
-int bx = int(random(50,width - 50));
-int by = int(random(50,width - 50));
+int bx = int(random(50, width - 50));
+int by = int(random(50, width - 50));
 int br = 300;
 int bsX = 5; 
 int bsY = 5;
@@ -29,7 +30,7 @@ int bsY = 5;
 //クイズ出題用
 int[] number(int number) {
   IntList nums = new IntList(number);
-  for(int i = 0; i < number; i++){
+  for (int i = 0; i < number; i++) {
     nums.append(i);
   };
   nums.shuffle();
@@ -49,23 +50,23 @@ void setup() {
   o = new Scene();
   s = new Stairs();
   q = new Quiz();
-  
+
   //データの読み込み
   data = loadStrings("quiz.txt");
-  if(data == null){
+  if (data == null) {
     print("開発者に問い合わせてください");
     exit();
   }
   question = new String[data.length / 2];
   answer   = new int[data.length / 2];
-  for(int i = 0;i < data.length;i++){
-    if(i % 2 == 0){
+  for (int i = 0; i < data.length; i++) {
+    if (i % 2 == 0) {
       question[ansTime] = data[i];
       //println(question[quesTime]);
       quesTime++;
-    }else{
+    } else {
       answer[ansTime] = int(data[i]);
-      if(answer[ansTime] == 0){
+      if (answer[ansTime] == 0) {
         t++;
       }
       //println(answer[ansTime]);
@@ -74,7 +75,7 @@ void setup() {
   }
   //ここまで
   num = number(data.length / 2);
-  
+
   println("○:" + t);
   println("☓:" + (data.length/2 - t));
 }
@@ -84,7 +85,7 @@ void draw() {
     o.scene(scene);
   } else if (scene == 1) {
     o.scene(scene);
-  } else if(scene == 2){
+  } else if (scene == 2) {
     o.scene(scene);
   } else if (scene == 3) {
     if (game == 0 && n > 0) {
@@ -108,6 +109,10 @@ void draw() {
       } else if (n == 3) {
         judge = q.quiz3(quizLimit);
       } else if (n == 4) {
+        if (done == 0) {
+          done = 1;
+          isPush = 1;
+        }
         judge = q.quiz4(quizLimit);
       } else if (n == 5) {
         judge = q.quiz5(quizLimit);
@@ -146,7 +151,7 @@ void keyPressed() {
       n = 1;
       game = 0;
       scene = 0;
-    } else if (scene == 5){
+    } else if (scene == 5) {
       scene = 0;
     }
     if (scene == 2 && n == 0) {
@@ -171,23 +176,13 @@ void keyPressed() {
     game = 1;
   } else if (key == 'q') {
     game = 0;
+  } else if (key == 'd') {
+    isPush = 0;
   }
 }
 
 void mousePressed() {
-  int w = 75, h = 50;
-  int tx = width/6 - w/2, ty = height * 4/5 - 25 - w/2;
-  int fx = width *5/6 - h/2, fy = height * 4/5 - 25/2 -5 - h/2;
-  if ((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)) {
-    trueButton = 1;
-    falseButton = 0;
-  } else if ((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)) {
-    trueButton = 0;
-    falseButton = 1;
-  } else {
-    trueButton = 0;
-    falseButton = 0;
-  }
+  q.isButtonPushed();
 }
 
 void time() {
@@ -205,9 +200,11 @@ void time() {
 }
 
 void action() {
+  int fall = int(random(1, n));
+  if (fall > 3) fall = 3;
   if (judge == 0) {
     game = 0;
-    n -= int(random(1, n));
+    n -= fall;
     reset();
     if (n == 0) {
       scene = 5;
@@ -224,5 +221,6 @@ void reset() {
   timer = 0;
   trueButton = 0;//○ボタン
   falseButton = 0;//☓ボタン
+  done = 0;
   quizLimit = sec;
 }
