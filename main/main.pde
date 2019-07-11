@@ -74,10 +74,10 @@ void setup() {
     }
   }
   //ここまで
-  num = number(data.length / 2);
+  num = number(data.length / 2 - 1);
 
-  //println("○:" + t);
-  //println("☓:" + (data.length/2 - t));
+  println("○:" + t);
+  println("☓:" + (data.length/2 - t));
 }
 
 void draw() {
