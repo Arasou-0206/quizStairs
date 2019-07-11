@@ -1,26 +1,36 @@
 class Scene {
   String data[] = null;
-  int [] x = new int[10], y = new int[10];
   int i, mcnt = 0;
+  int move;
   void scene(int s) {
-    background(255);
     //data = loadStrings("data/ending.txt");
-    data = loadStrings("quiz.txt");  //↑元のやつ
+    //↑本来のやつ　pullでtxtファイルがなくエラーが出たので.
+    data = loadStrings("quiz.txt"); 
+    
+    /* 一応消さないでおいた
+    int [] x = new int[data.length];
+    int [] y = new int[data.length];
+    */
+
+    background(255);
     if (s == 0) {
+      move = 0;
       mcnt++;
       fill(0);
       textSize(60);
-      //for (i = 0; i < data.length; i++) {
-        for (i = 0; i < x.length; i++) {  //↑元のやつ
+      /*
+      for (i = 0; i < data.length; i++) {
         x[i] = 150;
         y[i] = height + 100;
       }
+      */
       text("クイズの都", 180, 60);
       textSize(35);
       if ((mcnt % 60) < 40) {
         text("press 'Enter' key", 190, 300);
       }
-    }if (s == 1) {
+    }
+    if (s == 1) {
       mcnt++;
       fill(0);
       textSize(30);
@@ -45,12 +55,17 @@ class Scene {
     } else if (s == 4) {
       fill(0);
       textSize(30);
-      //for (i = 0; i < data.length; i++) {
-        for (i = 0; i < x.length; i++) {
-        text(data[i], x[i], y[i]);
-        y[i] -= 1;
+      
+      //配列の値が変わってロールするわけではないから, 
+      //int[] y は使わないと思う.
+      int x = 150;
+      int y = height + move;
+      for (i = 0; i < data.length; i++) {
+        text(data[i], x, y);
+        y += 30;
       }
-    }else if(s == 5){
+      move -= 1;
+    } else if (s == 5) {
       textSize(30);
       fill(255, 100, 50);
       text("残念！再挑戦するにはENTERを押してね♡", 0, height/2);

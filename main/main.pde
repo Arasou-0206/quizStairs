@@ -76,8 +76,8 @@ void setup() {
   //ここまで
   num = number(data.length / 2);
 
-  println("○:" + t);
-  println("☓:" + (data.length/2 - t));
+  //println("○:" + t);
+  //println("☓:" + (data.length/2 - t));
 }
 
 void draw() {
@@ -88,6 +88,7 @@ void draw() {
   } else if (scene == 2) {
     o.scene(scene);
   } else if (scene == 3) {
+    time();
     if (game == 0 && n > 0) {
       s.stairs();
       s.gate(timer);
@@ -98,7 +99,6 @@ void draw() {
         goal = 1;
       }
     } else if (game == 1) {
-      time();
       judge = -1;
       if (n == 0) {
         o.scene(5);
@@ -148,15 +148,17 @@ void keyPressed() {
         game = 1;
       }
     } else if (scene == 4) {
+      reset();
       n = 1;
-      game = 0;
       scene = 0;
     } else if (scene == 5) {
+      reset();
+      n = 1;
       scene = 0;
     }
-    if (scene == 2 && n == 0) {
+    if (scene == 3 && n == 0) {
+      reset();
       n = 1;
-      game = 0;
       scene = 0;
     }
   }

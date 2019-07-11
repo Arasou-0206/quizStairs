@@ -68,7 +68,7 @@ class Stairs {
   }
 
   void player() {
-    int pSpeed = 3;
+    int pSpeed = 2;
     playerY2 = pY-shrinkY*(n-1);
 
     fill(255, 150, 200);
@@ -91,9 +91,10 @@ class Stairs {
   }
 
   void ending() {
-    float end = pY-shrinkY*(10);
+    float end = pY-shrinkY*(stages);
     if (playerY1 <= end) {
       scene = 4;
+      playerY1 = pY;
     }
   }
 }

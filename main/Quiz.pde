@@ -1,11 +1,21 @@
 class Quiz {
 
-  int flag;
+  int flag = -1;
   int bx = width / 2;
   int by = height / 2;
   void quizTimer(int t) {
     fill(255, 0, 255);
     rect(width-30, 40, 20*-t, 25);
+
+    /*
+    for (int i = 0; i < answer.length; i++) {
+      if (flag == answer[i]) {
+        println("正解: "+flag+" A." + answer[i]);
+      } else if (flag != answer[i] && flag != -1) {
+        println("間違い: "+flag+" A." + answer[i]);
+      }
+    }
+    */
   }
   void ball() {
     fill(255, 200, 150);
@@ -58,7 +68,7 @@ class Quiz {
     }
 
     //☓ボタン
-    if (falseButton == 0) {
+    if (falseButton == 1) {
       fill(150);
       ellipse(width *5/6, height * 4/5 - 25, 75, 25);
       stroke(0, 0, 255);
