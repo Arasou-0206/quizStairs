@@ -4,16 +4,20 @@ class Quiz {
   int bx = width / 2;
   int by = height / 2;
   void quizTimer(int t) {
-    fill(0);
-    textSize(24);
-    text("制限時間:" + t + "seconds", width/2, 24);
     fill(255, 0, 255);
     rect(width-30, 40, 20*-t, 25);
   }
-  int ball(){
-    fill(230,209,112);
-    ellipse(bx,by,20,20);
-
+  void ball(){
+    fill(255,200,150);
+    ellipse(bx, by, br,br);
+    if(bx < br / 2 || bx > width - br / 2){
+      bsX *= -1;
+    }
+    if(by < br / 2 || by > height / br / 2){
+      bsY *= -1;
+    }
+    bx += bsX;
+    by += bsY;
   }
     
   void button() {
