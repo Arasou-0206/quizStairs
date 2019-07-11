@@ -76,6 +76,7 @@ class Stairs {
     if (n <= 10) {
       text(int(n) + "段目", width/6, height/4);
     } else if (n == 11) {
+      fill(255, 0, 0);
       text("クイズの都へようこそ", width/3, 30);
     }
     if (playerY1 < playerY2) {

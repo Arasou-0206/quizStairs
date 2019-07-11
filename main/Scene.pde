@@ -4,12 +4,14 @@ class Scene {
   int i, mcnt = 0;
   void scene(int s) {
     background(255);
-    data = loadStrings("data/ending.txt");
+    //data = loadStrings("data/ending.txt");
+    data = loadStrings("quiz.txt");  //↑元のやつ
     if (s == 0) {
       mcnt++;
       fill(0);
       textSize(60);
-      for (i = 0; i < data.length; i++) {
+      //for (i = 0; i < data.length; i++) {
+        for (i = 0; i < x.length; i++) {  //↑元のやつ
         x[i] = 150;
         y[i] = 600 + (i*30);
       }
