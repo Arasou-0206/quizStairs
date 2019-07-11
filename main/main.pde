@@ -38,6 +38,8 @@ int[] number(int number) {
 }
 int qCount = 0;//出題済み総数
 int[] num;
+int t = 0;
+//ここまで
 
 void setup() {
   size(700, 500);
@@ -63,12 +65,18 @@ void setup() {
       quesTime++;
     }else{
       answer[ansTime] = int(data[i]);
+      if(answer[ansTime] == 0){
+        t++;
+      }
       //println(answer[ansTime]);
       ansTime++;
     }
   }
   //ここまで
   num = number(data.length / 2);
+  
+  println("○:" + t);
+  println("☓:" + (data.length/2 - t));
 }
 
 void draw() {
