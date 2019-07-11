@@ -71,7 +71,7 @@ class Stairs {
     int pSpeed = 3;
     playerY2 = pY-shrinkY*(n-1);
 
-    fill(255, 0, 0);
+    fill(255, 150, 200);
     textSize(20);
     if (n <= 10) {
       text(int(n) + "段目", width/6, height/4);
@@ -79,10 +79,10 @@ class Stairs {
       text("クイズの都へようこそ", width/3, 30);
     }
     if (playerY1 < playerY2) {
-      fill(100, 0, 200);
+      fill(255, 120, 200);
       if (timer%pSpeed == 0) playerY1 += 3;
     } else if (playerY1 > playerY2) {
-      fill(255, 150, 255);
+      fill(255, 180, 200);
       if (timer%pSpeed == 0) playerY1 --;
     }
     ellipse(playerX, playerY1, 30, 50);

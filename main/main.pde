@@ -165,7 +165,7 @@ void time() {
     }
     if (quizLimit <= 0) {
       game = 0;
-      n --;
+      n -= int(random(1, n));
       reset();
     }
   }
@@ -174,7 +174,7 @@ void time() {
 void action() {
   if (judge == 0) {
     game = 0;
-    n --;
+    n -= int(random(1, n));
     reset();
     if (n == 0) {
       o.scene(4);
