@@ -1,13 +1,25 @@
 class Quiz {
 
   int flag;
-
+  int bx = width / 2;
+  int by = height / 2;
   void quizTimer(int t) {
-    fill(0);
-    textSize(24);
-    text("制限時間:" + t + "seconds", width/2, 24);
+    fill(255, 0, 255);
+    rect(width-30, 40, 20*-t, 25);
   }
-
+  void ball(){
+    fill(255,200,150);
+    ellipse(bx, by, br,br);
+    if(bx < br / 2 || bx > width - br / 2){
+      bsX *= -1;
+    }
+    if(by < br / 2 || by > height / br / 2){
+      bsY *= -1;
+    }
+    bx += bsX;
+    by += bsY;
+  }
+    
   void button() {
     rectMode(CENTER);
     noStroke();
@@ -180,7 +192,6 @@ class Quiz {
     textSize(40);
     text("7" + question[6], 30, height/3);
     button();
-
     if (flag == answer[6]) {
       return 1;
     } else if (flag != answer[6] && flag != -1) {

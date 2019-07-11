@@ -20,6 +20,12 @@ int quesTime = 0;
 int[] answer;//正誤格納
 int ansTime = 0;
 
+int bx = int(random(50,width - 50));
+int by = int(random(50,width - 50));
+int br = 300;
+int bsX = 5; 
+int bsY = 5;
+
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);
