@@ -192,7 +192,6 @@ void time() {
       quizLimit--;
     }
     if (quizLimit <= 0) {
-      game = 0;
       n -= int(random(1, n));
       reset();
     }
@@ -203,7 +202,6 @@ void action() {
   int fall = int(random(1, n));
   if (fall > 3) fall = 3;
   if (judge == 0) {
-    game = 0;
     n -= fall;
     reset();
     if (n == 0) {
@@ -211,13 +209,13 @@ void action() {
       o.scene(scene);
     }
   } else if (judge == 1) {
-    game = 0;
     n ++;
     reset();
   }
 }
 
 void reset() {
+  game = 0;
   timer = 0;
   trueButton = 0;//○ボタン
   falseButton = 0;//☓ボタン

@@ -58,7 +58,7 @@ class Quiz {
     }
 
     //☓ボタン
-    if (falseButton == 1) {
+    if (falseButton == 0) {
       fill(150);
       ellipse(width *5/6, height * 4/5 - 25, 75, 25);
       stroke(0, 0, 255);

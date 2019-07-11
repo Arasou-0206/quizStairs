@@ -13,7 +13,7 @@ class Scene {
       //for (i = 0; i < data.length; i++) {
         for (i = 0; i < x.length; i++) {  //↑元のやつ
         x[i] = 150;
-        y[i] = 600 + (i*30);
+        y[i] = height + 100;
       }
       text("クイズの都", 180, 60);
       textSize(35);
@@ -45,9 +45,10 @@ class Scene {
     } else if (s == 4) {
       fill(0);
       textSize(30);
-      for (i = 0; i < data.length; i++) {
-        y[i] -=1;
+      //for (i = 0; i < data.length; i++) {
+        for (i = 0; i < x.length; i++) {
         text(data[i], x[i], y[i]);
+        y[i] -= 1;
       }
     }else if(s == 5){
       textSize(30);
