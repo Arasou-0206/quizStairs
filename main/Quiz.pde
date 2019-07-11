@@ -7,19 +7,19 @@ class Quiz {
     fill(255, 0, 255);
     rect(width-30, 40, 20*-t, 25);
   }
-  void ball(){
-    fill(255,200,150);
-    ellipse(bx, by, br,br);
-    if(bx < br / 2 || bx > width - br / 2){
+  void ball() {
+    fill(255, 200, 150);
+    ellipse(bx, by, br, br);
+    if (bx < br / 2 || bx > width - br / 2) {
       bsX *= -1;
     }
-    if(by < br / 2 || by > height / br / 2){
+    if (by < br / 2 || by > height / br / 2) {
       bsY *= -1;
     }
     bx += bsX;
     by += bsY;
   }
-    
+
   void button() {
     rectMode(CENTER);
     noStroke();
@@ -89,17 +89,27 @@ class Quiz {
     fill(250, 225, 0);
     rect(10, height / 3, width - 20, 50);
   }
+
+  void questionText() {
+    int s = question[num[qCount]].length();
+    fill(0);
+    if (s < 15) {
+      textSize(50 - s);
+    } else {
+      textSize(40 - s);
+    }
+    text("1" + question[num[qCount]], 30, height/3);
+  }
   int quiz1(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text(question[0], 30, height/3);
+    questionText();
     button();
-
     if (flag == answer[0]) {
+      qCount++;
       return 1;
     } else if (flag != answer[0] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -108,14 +118,14 @@ class Quiz {
   int quiz2(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text(question[1], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[1]) {
+      qCount++;
       return 1;
     } else if (flag != answer[1] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -124,14 +134,14 @@ class Quiz {
   int quiz3(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("3" + question[2], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[2]) {
+      qCount++;
       return 1;
     } else if (flag != answer[2] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -140,14 +150,14 @@ class Quiz {
   int quiz4(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("4" + question[3], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[3]) {
+      qCount++;
       return 1;
     } else if (flag != answer[3] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -156,14 +166,14 @@ class Quiz {
   int quiz5(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("5" + question[4], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[4]) {
+      qCount++;
       return 1;
     } else if (flag != answer[4] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -172,14 +182,14 @@ class Quiz {
   int quiz6(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("6" + question[5], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[5]) {
+      qCount++;
       return 1;
     } else if (flag != answer[5] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -188,13 +198,14 @@ class Quiz {
   int quiz7(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("7" + question[6], 30, height/3);
+    questionText();
     button();
+
     if (flag == answer[6]) {
+      qCount++;
       return 1;
     } else if (flag != answer[6] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -203,14 +214,14 @@ class Quiz {
   int quiz8(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("8" + question[7], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[7]) {
+      qCount++;
       return 1;
     } else if (flag != answer[7] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -219,14 +230,14 @@ class Quiz {
   int quiz9(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("9" + question[8], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[8]) {
+      qCount++;
       return 1;
     } else if (flag != answer[8] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;
@@ -235,14 +246,14 @@ class Quiz {
   int quiz10(int time) {
     quizWindow();
     quizTimer(time);
-    fill(0);
-    textSize(40);
-    text("10" + question[9], 30, height/3);
+    questionText();
     button();
 
     if (flag == answer[9]) {
+      qCount++;
       return 1;
     } else if (flag != answer[9] && flag != -1) {
+      qCount++;
       return 0;
     } else {
       return -1;

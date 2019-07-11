@@ -26,6 +26,19 @@ int br = 300;
 int bsX = 5; 
 int bsY = 5;
 
+//クイズ出題用
+int[] number(int number) {
+  IntList nums = new IntList(number);
+  for(int i = 0; i < number; i++){
+    nums.append(i);
+  };
+  nums.shuffle();
+  int[] result = nums.array();
+  return result;
+}
+int qCount = 0;//出題済み総数
+int[] num;
+
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);
@@ -55,7 +68,7 @@ void setup() {
     }
   }
   //ここまで
-  
+  num = number(data.length / 2);
 }
 
 void draw() {
