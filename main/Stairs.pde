@@ -14,6 +14,7 @@ class Stairs {
   float playerX = width/2, playerY1 = pY-shrinkY*(n0-1), playerY2;
 
   PImage avatar = loadImage("image/character2.png");
+  float sizeX = 50, sizeY = 80;
 
   void backDisplay() {
     background(200, 255, 255);
@@ -49,7 +50,18 @@ class Stairs {
         if (gateTimer%gSpeed == 0) {
           gateX1 --;
           gateX2 ++;
+          sizeX --;
+          sizeY --;
         }
+      } else {
+          scene = 4;
+          playerY1 = pY;
+          
+          //リスタート時のエラーをなくす
+          gateX1 ++;
+          gateX2 --;
+          sizeX = 50;
+          sizeY = 80;
       }
     } else if (goal == 0) {
       if (gateX1 < close) {
@@ -70,7 +82,8 @@ class Stairs {
 
   void player() {
     int pSpeed = 2;
-    playerY2 = pY-shrinkY*(n-1);
+    int diff = int(shrinkY*3/2);
+    playerY2 = pY-shrinkY*(n-1) - diff;
 
     fill(255, 150, 200);
     textSize(20);
@@ -82,22 +95,17 @@ class Stairs {
     }
     if (playerY1 < playerY2) {
       fill(255, 120, 200);
-      if (timer%pSpeed == 0) playerY1 += 3;
+      if (timer%pSpeed == 0) {
+        playerY1 += 3;
+      }
     } else if (playerY1 > playerY2) {
       fill(255, 180, 200);
-      if (timer%pSpeed == 0) playerY1 --;
+      if (timer%pSpeed == 0 && n <= 10) {
+        playerY1 --;
+      }
     }
-    
-    //image(avatar, playerX, playerY1-shrinkY*3, 150, 120);
-    ellipse(playerX, playerY1, 30, 50);
-    ending();
-  }
-
-  void ending() {
-    float end = pY-shrinkY*(stages);
-    if (playerY1 <= end) {
-      scene = 4;
-      playerY1 = pY;
-    }
+  imageMode(CENTER);
+    image(avatar, playerX, playerY1, sizeX, sizeY);
+    imageMode(CORNER);
   }
 }
