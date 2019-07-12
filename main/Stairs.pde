@@ -14,20 +14,14 @@ class Stairs {
   float playerX = width/2, playerY1 = pY-shrinkY*(n0-1), playerY2;
 
   PImage avatar = loadImage("image/character2.png");
+  PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
 
   void backDisplay() {
-    background(200, 255, 255);
-
-    fill(0, 0, 255);
-    rect(0, height/3, width, height*2/3);
-
+    image(backgroundOcean, 0, 0, width, height);
     fill(200, 100, 0);
     ellipse(width/2, height/5, width/2, height/4);
     fill(50, 200, 0);
     rect(width/4 +5, 10, width/2 -10, height/5);
-
-    fill(255, 210, 0);
-    ellipse(60, 60, 80, 80);
   }
 
   void stairs() {
