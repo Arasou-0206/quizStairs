@@ -1,5 +1,6 @@
 class Scene {
   String data[] = null;
+  PImage img;
   int i, mcnt = 0;
   int move;
   void scene(int s) {
@@ -34,6 +35,8 @@ class Scene {
       mcnt++;
       fill(0);
       textSize(30);
+      img = loadImage("data/image/kanban.jpg");
+      image(img,0,0,width,height);
       text("クイズの都・タンブリンに入るには", 85, 60);
       text("『クイズの階段』の試練に挑まねばならない。", 25, 150);
       text("間違えれば階段から転げ落ちるだろう・・・。", 30, 240);
@@ -68,7 +71,10 @@ class Scene {
     } else if (s == 5) {
       textSize(30);
       fill(255, 100, 50);
-      text("残念！再挑戦するにはENTERを押してね♡", 0, height/2);
+      img = loadImage("data/image/haka.png");
+      image(img,0,0,width*3/4,height/2);
+      text("あなたは道半ばで息絶えてしまったようだ・・・", 0, height/2);
+      text("Press 'Enter' to Retry",width/2,height-30);
     }
   }
 }
