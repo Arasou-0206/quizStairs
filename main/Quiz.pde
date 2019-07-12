@@ -6,16 +6,6 @@ class Quiz {
   void quizTimer(int t) {
     fill(255, 0, 255);
     rect(width-30, 40, 20*-t, 25);
-
-    /*
-    for (int i = 0; i < answer.length; i++) {
-      if (flag == answer[i]) {
-        println("正解: "+flag+" A." + answer[i]);
-      } else if (flag != answer[i] && flag != -1) {
-        println("間違い: "+flag+" A." + answer[i]);
-      }
-    }
-    */
   }
   void ball() {
     fill(255, 200, 150);
