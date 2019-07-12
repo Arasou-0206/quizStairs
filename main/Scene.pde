@@ -4,9 +4,7 @@ class Scene {
   int i, mcnt = 0;
   int move;
   void scene(int s) {
-    //data = loadStrings("data/ending.txt");
-    //↑本来のやつ　pullでtxtファイルがなくエラーが出たので.
-    data = loadStrings("quiz.txt"); 
+    data = loadStrings("ending.txt"); 
     
     /* 一応消さないでおいた
     int [] x = new int[data.length];
@@ -71,7 +69,7 @@ class Scene {
     } else if (s == 5) {
       textSize(30);
       fill(255, 100, 50);
-      img = loadImage("data/image/haka.png");
+      img = loadImage("image/haka.png");
       image(img,0,0,width*3/4,height/2);
       text("あなたは道半ばで息絶えてしまったようだ・・・", 0, height/2);
       text("Press 'Enter' to Retry",width/2,height-30);

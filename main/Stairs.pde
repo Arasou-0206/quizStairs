@@ -13,6 +13,7 @@ class Stairs {
   float pY = height-shrinkY/2;
   float playerX = width/2, playerY1 = pY-shrinkY*(n0-1), playerY2;
 
+  PImage avatar = loadImage("image/character2.png");
 
   void backDisplay() {
     background(200, 255, 255);
@@ -86,6 +87,8 @@ class Stairs {
       fill(255, 180, 200);
       if (timer%pSpeed == 0) playerY1 --;
     }
+    
+    //image(avatar, playerX, playerY1-shrinkY*3, 150, 120);
     ellipse(playerX, playerY1, 30, 50);
     ending();
   }

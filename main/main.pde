@@ -76,18 +76,13 @@ void setup() {
   //ここまで
   num = number(data.length / 2 - 1);
 
-  println("○:" + t);
-  println("☓:" + (data.length/2 - t));
+  //println("○:" + t);
+  //println("☓:" + (data.length/2 - t));
 }
 
 void draw() {
-  if (scene == 0) {
-    o.scene(scene);
-  } else if (scene == 1) {
-    o.scene(scene);
-  } else if (scene == 2) {
-    o.scene(scene);
-  } else if (scene == 3) {
+  o.scene(scene);
+  if (scene == 3) {
     time();
     if (game == 0 && n > 0) {
       s.stairs();
@@ -129,10 +124,9 @@ void draw() {
       }
       action();
     }
-  } else if (scene == 4) {
-    o.scene(4);
   }
 }
+
 
 void keyPressed() {
   //main command
