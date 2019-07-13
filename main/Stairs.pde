@@ -38,7 +38,7 @@ class Stairs {
   }
 
   void gate(int gateTimer) {
-    int gSpeed = 5;
+    int gSpeed = 3;
     if (goal == 1) {
       if (gateX1 > open) {
         if (gateTimer%gSpeed == 0) {
@@ -49,13 +49,13 @@ class Stairs {
         }
       } else {
           scene = 4;
-          playerY1 = pY;
           
           //リスタート時のエラーをなくす
           gateX1 ++;
           gateX2 --;
           sizeX = 50;
           sizeY = 80;
+          playerY1 = pY;
       }
     } else if (goal == 0) {
       if (gateX1 < close) {
@@ -90,12 +90,12 @@ class Stairs {
     if (playerY1 < playerY2) {
       fill(255, 120, 200);
       if (timer%pSpeed == 0) {
-        playerY1 += 3;
+        playerY1 += 5;
       }
     } else if (playerY1 > playerY2) {
       fill(255, 180, 200);
       if (timer%pSpeed == 0 && n <= 10) {
-        playerY1 --;
+        playerY1 -= 3;
       }
     }
   imageMode(CENTER);

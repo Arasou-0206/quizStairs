@@ -15,7 +15,7 @@ int falseButton = 0;//☓ボタン
 int judge;
 int done = 0, isPush = 0; //押せるか押せないか
 
-String data[] = null;//データ読み込み
+String[] data = null;//データ読み込み
 String[] question;//クイズ問題格納
 int quesTime = 0;
 int[] answer;//正誤格納
@@ -127,16 +127,11 @@ void draw() {
   }
 }
 
-
 void keyPressed() {
   //main command
   if (keyCode == ENTER) {
-    if (scene == 0) {
-      scene = 1;
-    } else if (scene == 1) {
-      scene = 2;
-    } else if (scene == 2) {
-      scene = 3;
+    if (scene <= 2) {
+      scene ++;
     } else if (scene == 3) {
       if (game == 0) {
         game = 1;
@@ -164,29 +159,37 @@ void keyPressed() {
   } else if (keyCode == DOWN) {
     n --;
     reset();
-  } else if (key == 'G') {
-    if (scene > 0) {
-      scene --;
-    }
-  } else if (key == 'Q') {
-    game = 1;
-  } else if (key == 'q') {
-    game = 0;
   } else if (key == 'd') {
     isPush = 0;
   }
 }
 
 void mousePressed() {
-  q.isButtonPushed();
+  if (game == 1) q.isButtonPushed();
+  if (scene <= 2) {
+    scene ++;
+  } else if (scene == 3) {
+    if (game == 0) game = 1;
+  } else if (scene == 4) {
+    reset();
+    n = 1;
+    scene = 0;
+  } else if (scene == 5) {
+    reset();
+    n = 1;
+    scene = 0;
+  }
+  if (scene == 3 && n == 0) {
+    reset();
+    n = 1;
+    scene = 0;
+  }
 }
 
 void time() {
   timer ++;
   if (game == 1) {
-    if (timer % 60 == 0) {
-      quizLimit--;
-    }
+    if (timer % 60 == 0) quizLimit--;
     if (quizLimit <= 0) {
       n -= int(random(1, n));
       reset();
