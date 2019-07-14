@@ -16,13 +16,33 @@ class Stairs {
   PImage avatar = loadImage("image/character2.png");
   float sizeX = 50, sizeY = 80;
   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
-
+  PImage city            = loadImage("image/city.png");
+  
+  
+  void cloud() {
+    background(255);
+    noStroke();
+    float time = frameCount * tScale;
+    for (int w = 0; w < width; w += step) {
+      for (int h = 0; h < height; h += step) {
+        float n = noise(w * nScale + nOffset1.x + time, h * nScale + nOffset1.y - time, time);
+        float r = map(n, 0, 1, red(c1), red(c2));
+        float g = map(n, 0, 1, green(c1), green(c2));
+        float b = map(n, 0, 1, blue(c1), blue(c2));
+        fill(r, g, b);
+        rect(w, h, step, step);
+        fill(255, 255, 255, map(abs(n - 0.5) + 0.5, 0, 1, 255, 0));
+        rect(w, h, step, step);
+      }
+    }
+  }
   void backDisplay() {
+    cloud();
+    tint(255,255,255, 165);
     image(backgroundOcean, 0, 0, width, height);
-    fill(200, 100, 0);
-    ellipse(width/2, height/5, width/2, height/4);
-    fill(50, 200, 0);
-    rect(width/4 +5, 10, width/2 -10, height/5);
+    image(city, 0, 0, width, 150);
+    tint(255,255,255,255);
+    stroke(0);
   }
 
   void stairs() {
@@ -48,14 +68,14 @@ class Stairs {
           sizeY --;
         }
       } else {
-          scene = 4;
-          
-          //リスタート時のエラーをなくす
-          gateX1 ++;
-          gateX2 --;
-          sizeX = 50;
-          sizeY = 80;
-          playerY1 = pY;
+        scene = 4;
+
+        //リスタート時のエラーをなくす
+        gateX1 ++;
+        gateX2 --;
+        sizeX = 50;
+        sizeY = 80;
+        playerY1 = pY;
       }
     } else if (goal == 0) {
       if (gateX1 < close) {
@@ -98,8 +118,9 @@ class Stairs {
         playerY1 -= 3;
       }
     }
-  imageMode(CENTER);
+    imageMode(CENTER);
     image(avatar, playerX, playerY1, sizeX, sizeY);
     imageMode(CORNER);
   }
+  
 }
