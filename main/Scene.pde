@@ -3,6 +3,8 @@ class Scene {
   PImage img;
   int i, mcnt = 0;
   int move;
+   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
+   
   void scene(int s) {
     data = loadStrings("ending.txt"); 
     
@@ -61,10 +63,13 @@ class Scene {
       //int[] y は使わないと思う.
       int x = 150;
       int y = height + move;
+      image(backgroundOcean, 0, 0, width, height);
       for (i = 0; i < data.length; i++) {
+        
         text(data[i], x, y);
         y += 30;
       }
+      
       move -= 1;
     } else if (s == 5) {
       textSize(30);
