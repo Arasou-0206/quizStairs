@@ -12,13 +12,15 @@ class Stairs {
 
   float pY = height-shrinkY/2;
   float playerX = width/2, playerY1 = pY-shrinkY*(n0-1), playerY2;
+  int diff = int(shrinkY*3/2); //画像をキャラに使用しているために生じるズレ
+  float top = pY-shrinkY*(stages);
 
   PImage avatar = loadImage("image/character2.png");
   float sizeX = 50, sizeY = 80;
   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
   PImage city            = loadImage("image/city.png");
-  
-  
+
+
   void cloud() {
     background(255);
     noStroke();
@@ -36,12 +38,13 @@ class Stairs {
       }
     }
   }
+
   void backDisplay() {
     cloud();
-    tint(255,255,255, 165);
+    tint(255, 255, 255, 165);
     image(backgroundOcean, 0, 0, width, height);
     image(city, 0, 0, width, 150);
-    tint(255,255,255,255);
+    tint(255, 255, 255, 255);
     stroke(0);
   }
 
@@ -57,11 +60,10 @@ class Stairs {
     }
   }
 
-  void gate(int gateTimer) {
-    int gSpeed = 3;
+  void gate() {
     if (goal == 1) {
       if (gateX1 > open) {
-        if (gateTimer%gSpeed == 0) {
+        if (playerY1 <= top) {
           gateX1 --;
           gateX2 ++;
           sizeX --;
@@ -79,10 +81,8 @@ class Stairs {
       }
     } else if (goal == 0) {
       if (gateX1 < close) {
-        if (gateTimer%gSpeed == 0) {
-          gateX1 ++;
-          gateX2 --;
-        }
+        gateX1 ++;
+        gateX2 --;
       }
     }
     fill(100);
@@ -95,32 +95,26 @@ class Stairs {
   }
 
   void player() {
-    int pSpeed = 2;
-    int diff = int(shrinkY*3/2);
     playerY2 = pY-shrinkY*(n-1) - diff;
-
-    fill(255, 150, 200);
     textSize(20);
     if (n <= 10) {
+      fill(255);
+      rect(width/6 -5, height/4, 75, 20 +2);
+      fill(255, 150, 200);
       text(int(n) + "段目", width/6, height/4);
     } else if (n == 11) {
+      fill(255);
+      rect(width/3 -5, 30, 210, 20 +2);
       fill(255, 0, 0);
       text("クイズの都へようこそ", width/3, 30);
     }
     if (playerY1 < playerY2) {
-      fill(255, 120, 200);
-      if (timer%pSpeed == 0) {
-        playerY1 += 5;
-      }
+      playerY1 += 7;
     } else if (playerY1 > playerY2) {
-      fill(255, 180, 200);
-      if (timer%pSpeed == 0 && n <= 10) {
-        playerY1 -= 3;
-      }
+      if (playerY1 > top) playerY1 -= 4;
     }
     imageMode(CENTER);
     image(avatar, playerX, playerY1, sizeX, sizeY);
     imageMode(CORNER);
   }
-  
 }

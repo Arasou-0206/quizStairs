@@ -88,10 +88,10 @@ void setup() {
 
   //println("○:" + t);
   //println("☓:" + (data.length/2 - t));
-  
+
   //雲
   nOffset1 = new PVector(random(10000), random(10000));
-  nOffset2 = new PVector(random(10000), random(10000));  
+  nOffset2 = new PVector(random(10000), random(10000));
 }
 
 void draw() {
@@ -100,7 +100,7 @@ void draw() {
     time();
     if (game == 0 && n > 0) {
       s.stairs();
-      s.gate(timer);
+      s.gate();
       s.player();
       if (n > 0 && n <= 10) {
         goal = 0;
@@ -147,9 +147,7 @@ void keyPressed() {
     if (scene <= 2) {
       scene ++;
     } else if (scene == 3) {
-      if (game == 0) {
-        game = 1;
-      }
+      if (game == 0) game = 1;
     } else if (scene == 4) {
       reset();
       n = 1;
@@ -165,6 +163,8 @@ void keyPressed() {
       scene = 0;
     }
   }
+
+  if (game == 1) q.isButtonPushed();
 
   //working command
   if (keyCode == UP) {

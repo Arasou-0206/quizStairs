@@ -3,10 +3,12 @@ class Quiz {
   int flag = -1;
   int bx = width / 2;
   int by = height / 2;
+  
   void quizTimer(int t) {
     fill(255, 0, 255);
     rect(width-30, 40, 20*-t, 25);
   }
+  
   void ball() {
     fill(255, 200, 150);
     ellipse(bx, by, br, br);
@@ -87,10 +89,10 @@ class Quiz {
       int w = 75, h = 50;
       int tx = width/6 - w/2, ty = height * 4/5 - 25 - w/2;
       int fx = width *5/6 - h/2, fy = height * 4/5 - 25/2 -5 - h/2;
-      if ((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)) {
+      if (((mouseX >= tx && mouseX <= tx + w) && (mouseY >= ty && mouseY <= ty + h)) || key == 'o') {
         trueButton = 1;
         falseButton = 0;
-      } else if ((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)) {
+      } else if (((mouseX >= fx && mouseX <= fx + w) && (mouseY >= fy && mouseY <= fy + h)) || key == 'x') {
         trueButton = 0;
         falseButton = 1;
       } else {
