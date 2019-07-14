@@ -42,6 +42,16 @@ int[] num;
 int t = 0;
 //ここまで
 
+//雲
+color c1 = color(0, 0, 0);
+color c2 = color(0, 255, 255);
+PVector nOffset1, nOffset2;
+float nScale = 0.007;
+float tScale = 0.03;
+float step = 5.0;
+
+
+
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);
@@ -78,6 +88,10 @@ void setup() {
 
   //println("○:" + t);
   //println("☓:" + (data.length/2 - t));
+  
+  //雲
+  nOffset1 = new PVector(random(10000), random(10000));
+  nOffset2 = new PVector(random(10000), random(10000));  
 }
 
 void draw() {
