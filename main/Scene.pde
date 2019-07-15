@@ -45,6 +45,10 @@ class Scene {
       }
     } else if (s == 2) {
       mcnt++;
+      tint(255, 255, 255, 165);
+      img = loadImage("image/sora.jpeg");
+      image(img,0,0,width,height);
+       tint(255,255,255,255);
       q.button();
       fill(0);
       textSize(40);
