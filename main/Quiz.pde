@@ -185,9 +185,20 @@ class Quiz {
     }
   }
   int quiz5(int time) {
+    String [] back = question[num[qCount]].split("");
     quizWindow();
     quizTimer(time);
-    questionText();
+    int s = question[num[qCount]].length();
+    fill(0);
+    if (s < 15) {
+      textSize(50 - s);
+    } else {
+      textSize(45 - s);
+    }
+    text(5,30,height/3);
+    for(int i = back.length-1; i  >= 0; i--){
+      text(back[i], 30 + (back.length - i)*20, height/3);
+    }
     button();
 
     if (flag == answer[num[qCount]]) {
