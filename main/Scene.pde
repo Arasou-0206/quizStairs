@@ -7,9 +7,6 @@ class Scene {
    
   void scene(int s) {
     data = loadStrings("ending.txt"); 
-    
-
-
     background(255);
     if (s == 0) {
       move = 0;
@@ -71,8 +68,6 @@ class Scene {
       fill(0);
       textSize(30);
       
-      //配列の値が変わってロールするわけではないから, 
-      //int[] y は使わないと思う.
       int x = 150;
       int y = height + move;
       image(backgroundOcean, 0, 0, width, height);

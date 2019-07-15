@@ -50,8 +50,6 @@ float nScale = 0.007;
 float tScale = 0.03;
 float step = 5.0;
 
-
-
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);
@@ -98,6 +96,7 @@ void draw() {
   o.scene(scene);
   if (scene == 3) {
     time();
+    if (n == 0) scene = 5;
     if (game == 0 && n > 0) {
       s.stairs();
       s.gate();
@@ -109,9 +108,7 @@ void draw() {
       }
     } else if (game == 1) {
       judge = -1;
-      if (n == 0) {
-        scene = 5;
-      } else if (n == 1) {
+      if (n == 1) {
         judge = q.quiz1(quizLimit);
       } else if (n == 2) {
         judge = q.quiz2(quizLimit);
@@ -153,11 +150,6 @@ void keyPressed() {
       n = 1;
       scene = 0;
     } else if (scene == 5) {
-      reset();
-      n = 1;
-      scene = 0;
-    }
-    if (scene == 3 && n == 0) {
       reset();
       n = 1;
       scene = 0;
@@ -217,9 +209,6 @@ void action() {
   if (judge == 0) {
     n -= fall;
     reset();
-    if (n == 0) {
-      scene = 5;
-    }
   } else if (judge == 1) {
     n ++;
     reset();
