@@ -3,32 +3,31 @@ class Scene {
   PImage img;
   int i, mcnt = 0;
   int move;
-   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
+  PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
    
   void scene(int s) {
     data = loadStrings("ending.txt"); 
     
-    /* 一応消さないでおいた
-    int [] x = new int[data.length];
-    int [] y = new int[data.length];
-    */
+
 
     background(255);
     if (s == 0) {
       move = 0;
       mcnt++;
-      fill(0);
-      textSize(60);
-      /*
-      for (i = 0; i < data.length; i++) {
-        x[i] = 150;
-        y[i] = height + 100;
-      }
-      */
-      text("クイズの都", 180, 60);
+      textSize(70);
+      img = loadImage("image/sora.jpeg");
+      image(img,0,0,width,height);
+
+      fill(0,0,255);
+      text("クイズの都", 163, 63);
+      fill(255,0,0);
+      text("クイズの都", 160, 60);
       textSize(35);
-      if ((mcnt % 60) < 40) {
+      fill(0);
+      if ((mcnt % 60) < 30) {
         text("press 'Enter' key", 190, 300);
+        text("or",width/2-30,330);
+        text("Mouse Click",220,360);
       }
     }
     if (s == 1) {
@@ -38,20 +37,29 @@ class Scene {
       img = loadImage("data/image/kanban.jpg");
       image(img,0,0,width,height);
       text("クイズの都・タンブリンに入るには", 85, 60);
-      text("『クイズの階段』の試練に挑まねばならない。", 25, 150);
-      text("間違えれば階段から転げ落ちるだろう・・・。", 30, 240);
-      text("見事クイズに正解し、階段を駆け上がれ！！", 40, 330);
-      if ((mcnt % 60) < 40) {
+      text(" 『クイズの階段』の試練に挑まねばならない。", 25, 150);
+      text("  間違えれば階段から転げ落ちるだろう・・・。", 30, 240);
+      text("  見事クイズに正解し、階段を駆け上がれ！！", 40, 330);
+      if ((mcnt % 60) < 30) {
         text("'Enter' keyで次へ", 200, 420);
       }
     } else if (s == 2) {
       mcnt++;
+      q.button();
       fill(0);
       textSize(40);
-      text("操作説明", 230, 60);
+      text("操作説明",width/2 - 80,40);
       textSize(30);
+      text("'Enter'を押すかClickをすると問題が出題されます。",0,110);
+      text("下のような○Xボタンがでますので、",width/2 - 230,150);
+      text("正解と思う方をクリックしてください。",width/2 - 250,190);
+      text("正解すると階段を登り、",180,230);
+      text("間違えると階段を滑り落ちていきます。",100,270);
       if ((mcnt % 60) < 40) {
-        text("'Enter' keyで次へ", 200, 420);
+        text("'Enter' key or Click で", 60, 440);
+        fill(255,0,0);
+        textSize(50);
+        text("スタート", 400, 430);
       }
     } else if (s == 3) {
       //game playing
@@ -72,12 +80,18 @@ class Scene {
       
       move -= 1;
     } else if (s == 5) {
-      textSize(30);
+      mcnt++;
       fill(255, 100, 50);
       img = loadImage("image/haka.png");
-      image(img,0,0,width*3/4,height/2);
-      text("あなたは道半ばで息絶えてしまったようだ・・・", 0, height/2);
-      text("Press 'Enter' to Retry",width/2,height-30);
+      image(img,0,0,width/2,height);
+      textSize(80);
+      text("残念！！",width/2,30);
+      textSize(30);
+      text("あなたは道半ばで",width/2,height/2 - 30);
+      text("息絶えてしまったようだ・・・", width/2-60, height/2);
+      if((mcnt % 60) < 20){
+        text("Press 'Enter' to Retry",width/2,height-35);
+      }
     }
   }
 }

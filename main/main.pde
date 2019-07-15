@@ -110,7 +110,7 @@ void draw() {
     } else if (game == 1) {
       judge = -1;
       if (n == 0) {
-        o.scene(5);
+        scene = 5;
       } else if (n == 1) {
         judge = q.quiz1(quizLimit);
       } else if (n == 2) {
@@ -219,7 +219,6 @@ void action() {
     reset();
     if (n == 0) {
       scene = 5;
-      o.scene(scene);
     }
   } else if (judge == 1) {
     n ++;
