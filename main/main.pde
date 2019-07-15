@@ -1,3 +1,12 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim = new Minim(this);
+AudioPlayer Answer;
 Stairs s;
 Quiz q;
 Scene o;
@@ -91,7 +100,6 @@ void setup() {
   nOffset1 = new PVector(random(10000), random(10000));
   nOffset2 = new PVector(random(10000), random(10000));
 }
-
 void draw() {
   o.scene(scene);
   if (scene == 3) {
@@ -207,9 +215,15 @@ void action() {
   int fall = int(random(1, n));
   if (fall > 3) fall = 3;
   if (judge == 0) {
+    Answer = minim.loadFile("BGM/incorrect1.mp3");
+    Answer.play();
+    Answer.rewind();
     n -= fall;
     reset();
   } else if (judge == 1) {
+    Answer = minim.loadFile("BGM/correct1.mp3");
+    Answer.play();
+    Answer.rewind();
     n ++;
     reset();
   }
@@ -222,4 +236,10 @@ void reset() {
   falseButton = 0;//☓ボタン
   done = 0;
   quizLimit = sec;
+}
+
+void stop() {
+  Answer.close();
+  minim.stop();
+  super.stop();
 }
