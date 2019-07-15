@@ -20,7 +20,6 @@ class Stairs {
   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
   PImage city            = loadImage("image/city.png");
 
-
   void cloud() {
     background(255);
     noStroke();
