@@ -1,7 +1,6 @@
 class Scene {
   String data[] = null;
   PImage img;
-  int i, mcnt = 0;
   int move;
   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
    
@@ -71,7 +70,7 @@ class Scene {
       int x = 150;
       int y = height + move;
       image(backgroundOcean, 0, 0, width, height);
-      for (i = 0; i < data.length; i++) {
+      for (int i = 0; i < data.length; i++) {
         
         text(data[i], x, y);
         y += 30;

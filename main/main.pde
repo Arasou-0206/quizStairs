@@ -23,6 +23,7 @@ int trueButton = 0;//○ボタン
 int falseButton = 0;//☓ボタン
 int judge;
 int done = 0, isPush = 0; //押せるか押せないか
+int mcnt = 0;
 
 String[] data = null;//データ読み込み
 String[] question;//クイズ問題格納
@@ -205,6 +206,7 @@ void time() {
   if (game == 1) {
     if (timer % 60 == 0) quizLimit--;
     if (quizLimit <= 0) {
+      qCount++;
       n -= int(random(1, n));
       reset();
     }
@@ -235,7 +237,9 @@ void reset() {
   trueButton = 0;//○ボタン
   falseButton = 0;//☓ボタン
   done = 0;
+  isPush = 0;
   quizLimit = sec;
+  mcnt = 0;
 }
 
 void stop() {
