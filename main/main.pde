@@ -6,7 +6,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 Minim minim = new Minim(this);
-AudioPlayer Answer;
+AudioPlayer[] Answer;
 Stairs s;
 Quiz q;
 Scene o;
@@ -94,13 +94,16 @@ void setup() {
   //ここまで
   num = number(data.length / 2 - 1);
 
-  //println("○:" + t);
-  //println("☓:" + (data.length/2 - t));
-
   //雲
   nOffset1 = new PVector(random(10000), random(10000));
   nOffset2 = new PVector(random(10000), random(10000));
+  
+  //正誤効果音
+  Answer = new AudioPlayer[2];
+  Answer[0] = minim.loadFile("BGM/incorrect1.mp3");
+  Answer[1] = minim.loadFile("BGM/correct1.mp3");
 }
+
 void draw() {
   o.scene(scene);
   if (scene == 3) {
@@ -165,7 +168,9 @@ void keyPressed() {
     }
   }
 
-  if (game == 1) q.isButtonPushed();
+  if (game == 1){
+    q.isButtonPushed();
+  }
 
   //working command
   if (keyCode == UP) {
@@ -180,7 +185,10 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (game == 1) q.isButtonPushed();
+  if (game == 1){
+    q.isButtonPushed();
+    game = 0;
+  }
   if (scene <= 2) {
     scene ++;
   } else if (scene == 3) {
@@ -217,17 +225,15 @@ void action() {
   int fall = int(random(1, n));
   if (fall > 3) fall = 3;
   if (judge == 0) {
-    Answer = minim.loadFile("BGM/incorrect1.mp3");
-    Answer.play();
-    Answer.rewind();
+    reset();
+    Answer[0].play();
+    Answer[0].rewind();
     n -= fall;
-    reset();
   } else if (judge == 1) {
-    Answer = minim.loadFile("BGM/correct1.mp3");
-    Answer.play();
-    Answer.rewind();
-    n ++;
     reset();
+    Answer[1].play();
+    Answer[1].rewind();
+    n ++;
   }
 }
 
@@ -242,8 +248,10 @@ void reset() {
   mcnt = 0;
 }
 
+/*
 void stop() {
   Answer.close();
   minim.stop();
   super.stop();
 }
+*/

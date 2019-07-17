@@ -39,7 +39,7 @@ class Stairs {
   }
 
   void backDisplay() {
-    cloud();
+    //cloud();
     tint(255, 255, 255, 165);
     image(backgroundOcean, 0, 0, width, height);
     image(city, 0, 0, width, 150);
