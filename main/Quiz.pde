@@ -1,25 +1,9 @@
 class Quiz {
-
   int flag = -1;
-  int bx = width / 2;
-  int by = height / 2;
-  
+
   void quizTimer(int t) {
     fill(255, 0, 255);
-    rect(width-30, 40, 20*-t, 25);
-  }
-  
-  void ball() {
-    fill(255, 200, 150);
-    ellipse(bx, by, br, br);
-    if (bx < br / 2 || bx > width - br / 2) {
-      bsX *= -1;
-    }
-    if (by < br / 2 || by > height / br / 2) {
-      bsY *= -1;
-    }
-    bx += bsX;
-    by += bsY;
+    rect(width-30, 40, -t*20, 25);
   }
 
   void button() {
@@ -100,6 +84,26 @@ class Quiz {
         falseButton = 0;
       }
     }
+  }
+
+  void gimmick() {
+      
+    if (isPush == 1) {
+      fill(255, 200, 150);
+      ellipse(bx, by, br, br);
+      if (bx < br / 2 || bx > width - br / 2) {
+        bsX *= -1;
+      }
+      if (by < br / 2 || by > height - br / 2) {
+        bsY *= -1;
+      }
+      bx += bsX;
+      by += bsY;
+      }
+  }
+  
+  void isClear(){
+    if ((mouseX-bx)*(mouseX-bx) + (mouseY-by)*(mouseY-by) <= br*br) isPush = 0;
   }
 
   void quizWindow() {
@@ -195,8 +199,8 @@ class Quiz {
     } else {
       textSize(45 - s);
     }
-    text(5,30,height/3);
-    for(int i = back.length-1; i  >= 0; i--){
+    text(5, 30, height/3);
+    for (int i = back.length-1; i  >= 0; i--) {
       text(back[i], 30 + (back.length - i)*20, height/3);
     }
     button();

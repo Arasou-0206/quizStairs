@@ -31,12 +31,6 @@ int quesTime = 0;
 int[] answer;//正誤格納
 int ansTime = 0;
 
-int bx = int(random(50, width - 50));
-int by = int(random(50, width - 50));
-int br = 300;
-int bsX = 5; 
-int bsY = 5;
-
 //クイズ出題用
 int[] number(int number) {
   IntList nums = new IntList(number);
@@ -59,6 +53,12 @@ PVector nOffset1, nOffset2;
 float nScale = 0.007;
 float tScale = 0.03;
 float step = 5.0;
+
+int br = 300;
+int bx = int(random(200, width - 200));
+int by = int(random(200, width - 200));
+int bsX = 5; 
+int bsY = 5;
 
 void setup() {
   size(700, 500);
@@ -110,9 +110,9 @@ void draw() {
   o.scene(scene);
   if (scene == 3) {
     time();
-    if (n == 0){
+    if (n == 0) {
       Answer[2].play();
-    Answer[2].rewind();
+      Answer[2].rewind();
       scene = 5;
     }
     if (game == 0 && n > 0) {
@@ -131,6 +131,10 @@ void draw() {
       } else if (n == 2) {
         judge = q.quiz2(quizLimit);
       } else if (n == 3) {
+        if (done == 0) {
+          done = 1;
+          isPush = 1;
+        }
         judge = q.quiz3(quizLimit);
       } else if (n == 4) {
         if (done == 0) {
@@ -143,14 +147,27 @@ void draw() {
       } else if (n == 6) {
         judge = q.quiz6(quizLimit);
       } else if (n == 7) {
+        if (done == 0) {
+          done = 1;
+          isPush = 1;
+        }
         judge = q.quiz7(quizLimit);
       } else if (n == 8) {
+        if (done == 0) {
+          done = 1;
+          isPush = 1;
+        }
         judge = q.quiz8(quizLimit);
       } else if (n == 9) {
         judge = q.quiz9(quizLimit);
       } else if (n == 10) {
+        if (done == 0) {
+          done = 1;
+          isPush = 1;
+        }
         judge = q.quiz10(quizLimit);
       }
+      q.gimmick();
       action();
     }
   }
@@ -158,11 +175,12 @@ void draw() {
 
 void keyPressed() {
   //main command
+  /*
   if (keyCode == ENTER) {
     if (scene <= 2) {
       scene ++;
     } else if (scene == 3) {
-      if (game == 0) game = 1;
+      if (game == 0 && n <= 10) game = 1;
     } else if (scene == 4) {
       reset();
       n = 1;
@@ -173,6 +191,7 @@ void keyPressed() {
       scene = 0;
     }
   }
+  */
 
   if (game == 1) {
     q.isButtonPushed();
@@ -187,18 +206,22 @@ void keyPressed() {
     reset();
   } else if (key == 'd') {
     isPush = 0;
+  } else if (key == 'D') {
+    isPush = 1;
   }
 }
 
 void mousePressed() {
+  //main command
   if (game == 1) {
     q.isButtonPushed();
     game = 0;
   }
+  if (isPush == 1) q.isClear();
   if (scene <= 2) {
     scene ++;
   } else if (scene == 3) {
-    if (game == 0) game = 1;
+    if (game == 0 && n <= 10) game = 1;
   } else if (scene == 4) {
     reset();
     n = 1;
@@ -254,6 +277,7 @@ void reset() {
   isPush = 0;
   quizLimit = sec;
   mcnt = 0;
+  br = 300 - 28*int(n);
 }
 
 
