@@ -223,6 +223,8 @@ void time() {
       qCount++;
       n -= int(random(1, n));
       reset();
+      Answer[0].play();
+      Answer[0].rewind();
     }
   }
 }
