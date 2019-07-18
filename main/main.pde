@@ -97,18 +97,24 @@ void setup() {
   //雲
   nOffset1 = new PVector(random(10000), random(10000));
   nOffset2 = new PVector(random(10000), random(10000));
-  
+
   //正誤効果音
-  Answer = new AudioPlayer[2];
+  Answer = new AudioPlayer[4];
   Answer[0] = minim.loadFile("BGM/incorrect1.mp3");
   Answer[1] = minim.loadFile("BGM/correct1.mp3");
+  Answer[2] = minim.loadFile("BGM/info-girl1-zannen1.mp3");
+  Answer[3] = minim.loadFile("BGM/wind1.mp3");
 }
 
 void draw() {
   o.scene(scene);
   if (scene == 3) {
     time();
-    if (n == 0) scene = 5;
+    if (n == 0){
+      Answer[2].play();
+    Answer[2].rewind();
+      scene = 5;
+    }
     if (game == 0 && n > 0) {
       s.stairs();
       s.gate();
@@ -168,7 +174,7 @@ void keyPressed() {
     }
   }
 
-  if (game == 1){
+  if (game == 1) {
     q.isButtonPushed();
   }
 
@@ -185,7 +191,7 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (game == 1){
+  if (game == 1) {
     q.isButtonPushed();
     game = 0;
   }
@@ -248,10 +254,11 @@ void reset() {
   mcnt = 0;
 }
 
-/*
+
 void stop() {
-  Answer.close();
+  for (int i = 0; i < Answer.length; i++) {
+    Answer[i].close();
+  }
   minim.stop();
   super.stop();
 }
-*/
