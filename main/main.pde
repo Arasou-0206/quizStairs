@@ -99,11 +99,12 @@ void setup() {
   nOffset2 = new PVector(random(10000), random(10000));
 
   //正誤効果音
-  Answer = new AudioPlayer[4];
+  Answer = new AudioPlayer[5];
   Answer[0] = minim.loadFile("BGM/incorrect1.mp3");
   Answer[1] = minim.loadFile("BGM/correct1.mp3");
   Answer[2] = minim.loadFile("BGM/info-girl1-zannen1.mp3");
-  Answer[3] = minim.loadFile("BGM/wind1.mp3");
+  Answer[3] = minim.loadFile("BGM/plane-cloud.mp3");
+  Answer[4] = minim.loadFile("BGM/wind1.mp3");
 }
 
 void draw() {
@@ -121,10 +122,14 @@ void draw() {
       s.player();
       if (n > 0 && n <= 10) {
         goal = 0;
+        Answer[4].play();
       } else if (n == 11) {
         goal = 1;
+        Answer[3].play();
       }
     } else if (game == 1) {
+      Answer[4].pause();
+  Answer[4].rewind();
       judge = -1;
       if (n == 1) {
         judge = q.quiz1(quizLimit);
@@ -278,6 +283,8 @@ void reset() {
   quizLimit = sec;
   mcnt = 0;
   br = 300 - 28*int(n);
+   Answer[3].pause();
+  Answer[3].rewind();
 }
 
 
