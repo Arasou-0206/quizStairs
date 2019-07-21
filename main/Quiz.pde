@@ -2,8 +2,15 @@ class Quiz {
   int flag = -1;
 
   void quizTimer(int t) {
+    smooth();
+    stroke(1);
+    fill(255,255,0);
+    rect(width - 255, 30, 250,48,30);
+    noStroke();
+    fill(255);
+    rect(width-30,40,-200,25,30);
     fill(255, 0, 255);
-    rect(width-30, 40, -t*20, 25);
+    rect(width-30, 40, -t*20, 25,30);
   }
 
   void button() {
@@ -107,12 +114,13 @@ class Quiz {
   }
 
   void quizWindow() {
+    smooth();
     background(255);
     noStroke();
     fill(30, 0, 156);
-    rect(5, 5, width - 10, height * 4/5-50);
+    rect(5, 5, width - 10, height * 4/5-50,10);
     fill(250, 225, 0);
-    rect(10, height / 3, width - 20, 50);
+    rect(10, height / 3, width - 20, 50,10);
   }
 
   void questionText() {
