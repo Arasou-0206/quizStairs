@@ -4,12 +4,19 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
+import javax.swing.*;
+import java.awt.*;
 
 Minim minim = new Minim(this);
 AudioPlayer[] Answer;
 Stairs s;
 Quiz q;
 Scene o;
+
+JLayeredPane pane;
+JTextField field;
+JTextArea area;
+JScrollPane scrollPane;
 
 int goal = 0, game = 0, timer = 0;
 float n = 1; //何段目の階段のクイズか
@@ -60,6 +67,12 @@ int by = int(random(200, width - 200));
 int bsX = 5; 
 int bsY = 5;
 
+//revue
+String fileName;
+String[] item;
+int commentCount= 0;
+
+
 void setup() {
   size(700, 500);
   font = createFont("myFont.vlw", 64);
@@ -105,6 +118,19 @@ void setup() {
   Answer[2] = minim.loadFile("BGM/info-girl1-zannen1.mp3");
   Answer[3] = minim.loadFile("BGM/plane-cloud.mp3");
   Answer[4] = minim.loadFile("BGM/wind1.mp3");
+  
+  
+  // SmoothCanvasの親の親にあたるJLayeredPaneを取得
+  Canvas canvas = (Canvas) surface.getNative();
+  pane = (JLayeredPane) canvas.getParent().getParent();
+  
+    // 複数行のテキストボックスを作成
+  area = new JTextArea();
+  area.setLineWrap(true);
+  area.setWrapStyleWord(true);
+  scrollPane = new JScrollPane(area);
+  fileName = "data/sample.txt";
+  item = new String[10];
 }
 
 void draw() {
@@ -129,7 +155,7 @@ void draw() {
       }
     } else if (game == 1) {
       Answer[4].pause();
-  Answer[4].rewind();
+      Answer[4].rewind();
       judge = -1;
       if (n == 1) {
         judge = q.quiz1(quizLimit);
@@ -182,21 +208,21 @@ void keyPressed() {
   //main command
   /*
   if (keyCode == ENTER) {
-    if (scene <= 2) {
-      scene ++;
-    } else if (scene == 3) {
-      if (game == 0 && n <= 10) game = 1;
-    } else if (scene == 4) {
-      reset();
-      n = 1;
-      scene = 0;
-    } else if (scene == 5) {
-      reset();
-      n = 1;
-      scene = 0;
-    }
-  }
-  */
+   if (scene <= 2) {
+   scene ++;
+   } else if (scene == 3) {
+   if (game == 0 && n <= 10) game = 1;
+   } else if (scene == 4) {
+   reset();
+   n = 1;
+   scene = 0;
+   } else if (scene == 5) {
+   reset();
+   n = 1;
+   scene = 0;
+   }
+   }
+   */
 
   if (game == 1) {
     q.isButtonPushed();
@@ -213,6 +239,8 @@ void keyPressed() {
     isPush = 0;
   } else if (key == 'D') {
     isPush = 1;
+  } else if (key == 'b'){
+    scene = 4;
   }
 }
 
@@ -228,10 +256,24 @@ void mousePressed() {
   } else if (scene == 3) {
     if (game == 0 && n <= 10) game = 1;
   } else if (scene == 4) {
+    if (o.push() == 1) {
+      scrollPane.setBounds(width / 2 - 100, height / 2 - 50, 200, 100);
+      pane.add(scrollPane);
+      scene = 6;
+    } else {
+      reset();
+      n = 1;
+      scene = 0;
+    }
+  } else if (scene == 5) {
     reset();
     n = 1;
     scene = 0;
-  } else if (scene == 5) {
+  } else if (scene == 6) {
+    scrollPane.setBounds(-100, -100, 10, 10);
+    pane.add(scrollPane);
+    commentCount++;
+    area.setText("");
     reset();
     n = 1;
     scene = 0;
@@ -283,7 +325,7 @@ void reset() {
   quizLimit = sec;
   mcnt = 0;
   br = 300 - 28*int(n);
-   Answer[3].pause();
+  Answer[3].pause();
   Answer[3].rewind();
 }
 
