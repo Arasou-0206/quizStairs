@@ -1,5 +1,5 @@
 class Stairs {
-  int stages = 10;
+  int stages = stairs;
   float shrinkX = (width/3)/stages;
   float shrinkY = (height*3/4)/stages;
 
@@ -88,7 +88,7 @@ class Stairs {
     rect(width/3, height/8, width/3, height/7);
     fill(255, 255, 200);
     rect(width/2 - len/2, gateY, len*3/2, height/7);
-    fill(200);
+    fill(#C1191F);
     rect(gateX1, gateY, len, height/7);
     rect(gateX2, gateY, len, height/7);
   }
@@ -96,12 +96,12 @@ class Stairs {
   void player() {
     playerY2 = pY-shrinkY*(n-1) - diff;
     textSize(20);
-    if (n <= 10) {
+    if (n <= stairs) {
       fill(255);
       rect(width/6 -5, height/4, 75, 20 +2);
       fill(255, 150, 200);
       text(int(n) + "段目", width/6, height/4);
-    } else if (n == 11) {
+    } else if (n == stairs + 1) {
       fill(255);
       rect(width/3 -5, 30, 210, 20 +2);
       fill(255, 0, 0);

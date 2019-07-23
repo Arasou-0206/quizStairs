@@ -5,7 +5,7 @@ class Scene {
   PImage backgroundOcean = loadImage("image/background_blue_ocean.png");
   PImage nightSea                 = loadImage("image/nightSea.jpg");
   int revueX  = width * 1/2;
-  int revueY  = height - 150;
+  int revueY  = height - 160;
   int revueW = 120;
   int revueH  = 40;
   

@@ -19,6 +19,7 @@ JTextArea area;
 JScrollPane scrollPane;
 
 int goal = 0, game = 0, timer = 0;
+int stairs = 10;
 float n = 1; //何段目の階段のクイズか
 float n0 = n; //直前のn
 int scene = 0; //シーン切り替え値
@@ -62,8 +63,8 @@ float tScale = 0.03;
 float step = 5.0;
 
 int br = 300;
-int bx = int(random(200, width - 200));
-int by = int(random(200, width - 200));
+int bx = int(random(300, width - 300));
+int by = int(random(300, width - 300));
 int bsX = 5; 
 int bsY = 5;
 
@@ -146,10 +147,10 @@ void draw() {
       s.stairs();
       s.gate();
       s.player();
-      if (n > 0 && n <= 10) {
+      if (n > 0 && n <= stairs) {
         goal = 0;
         Answer[4].play();
-      } else if (n == 11) {
+      } else if (n == stairs + 1) {
         goal = 1;
         Answer[3].play();
       }
@@ -254,7 +255,7 @@ void mousePressed() {
   if (scene <= 2) {
     scene ++;
   } else if (scene == 3) {
-    if (game == 0 && n <= 10) game = 1;
+    if (game == 0 && n <= stairs) game = 1;
   } else if (scene == 4) {
     if (o.push() == 1) {
       scrollPane.setBounds(width / 2 - 100, height / 2 - 50, 200, 100);
@@ -325,10 +326,11 @@ void reset() {
   quizLimit = sec;
   mcnt = 0;
   br = 300 - 28*int(n);
+  bx = int(random(300, width - 300));
+  by = int(random(300, width - 300));
   Answer[3].pause();
   Answer[3].rewind();
 }
-
 
 void stop() {
   for (int i = 0; i < Answer.length; i++) {

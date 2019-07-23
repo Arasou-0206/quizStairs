@@ -94,7 +94,6 @@ class Quiz {
   }
 
   void gimmick() {
-      
     if (isPush == 1) {
       fill(255, 200, 150);
       ellipse(bx, by, br, br);
@@ -104,8 +103,8 @@ class Quiz {
       if (by < br / 2 || by > height - br / 2) {
         bsY *= -1;
       }
-      bx += bsX;
-      by += bsY;
+        bx += bsX;
+        by += bsY;
       }
   }
   
