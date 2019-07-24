@@ -205,13 +205,13 @@ class Scene {
         newData();
         println("1");
       } else {
-        data = loadStrings("quiz.txt");
+        data = loadStrings("food.txt");
         newData();
         println("3");
       }
     } else if (  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW) {
       if ((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH) {
-        data = loadStrings("quiz.txt");
+        data = loadStrings("item.txt");
         newData();
         println("4");
       } else {
