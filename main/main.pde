@@ -287,6 +287,7 @@ void mousePressed() {
     scene = 0;
   } else if (scene == 7) {
     o.loadData();
+    scene = 1;
   }
   if (scene == 3 && n == 0) {
     reset();

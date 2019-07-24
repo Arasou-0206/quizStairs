@@ -8,20 +8,15 @@ class Scene {
   int revueY  = height - 160;
   int revueW = 120;
   int revueH  = 40;
-<<<<<<< HEAD
 
   int genreX = 30;
   int genreY = 80;
   int genreW = width - genreX * 2;
-  int genreH = height - 80;
-
-=======
-  int select = 1;
+  int genreH = height - genreY - 10 ;
   
   int genreButtonX = width -190;
   int genreButtonY = height -45;
   
->>>>>>> dd3f1b447b24e83e390373409ee417b955981254
   void scene(int s) {
     data = loadStrings("ending.txt"); 
     background(255);
@@ -41,8 +36,8 @@ class Scene {
       if ((mcnt % 60) < 30) {
         text("Mouse Click", 240, 360);
       }
-<<<<<<< HEAD
-=======
+
+
       textSize(30);
       if(genreButtonX < mouseX && genreButtonY < mouseY){
         fill(255,120,0);
@@ -55,8 +50,6 @@ class Scene {
         fill(0);
         text("ジャンル選択",width-185,height-40);
       }
-      
->>>>>>> dd3f1b447b24e83e390373409ee417b955981254
     }
     if (s == 1) {
       mcnt++;
@@ -152,20 +145,12 @@ class Scene {
       rect(genreX, genreY, genreW, genreH, 10);
 
       fill(0);
-      line((genreX + genreW) / 2, genreY,(genreX + genreW) / 2 , genreH);
-      line(width*2/3, 80, width*2/3, height-10);
+      line((genreX * 2 + genreW) / 2, genreY,(genreX  * 2+ genreW) / 2 , genreY + genreH);
+      line(genreX, (genreY * 2 + genreH) / 2, genreW + genreX, (genreY * 2 + genreH) / 2);
 
       fill(255);
       textSize(60);
       text("ジャンルを選択してね！", 50, 0);
-      fill(0);
-      textSize(30);
-      text("オール", 40, 90);
-      text("食べ物", width/3+10, 90);
-      text("学問", width*2/3+10, 90);
-      text("SCANDAL", 40, height/2+40);
-      text("SCANDAL", width/3+10, height/2+40);
-      text("SCANDAL", width*2/3+10, height/2+40);
     }
   }
   boolean pushRevue() {
@@ -177,13 +162,8 @@ class Scene {
   }
 
   boolean pushGenre() {
-<<<<<<< HEAD
-    if (genreX <= mouseX && mouseX <= genreX + 100) {
-      if (genreY <= mouseY && mouseY <= genreY + 30) {
-=======
     if(genreButtonX <= mouseX && mouseX <= genreButtonX + 100){
       if(genreButtonY <= mouseY && mouseY <= genreButtonY + 30){
->>>>>>> dd3f1b447b24e83e390373409ee417b955981254
         return true;
       }
     }
@@ -191,9 +171,26 @@ class Scene {
   }
 
   void loadData() {
-    if (true) {
-      data = loadStrings("quiz.txt");
-      newData();
+    if (genreX <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 ) {
+      if(genreY <= mouseY && mouseY <= (genreY * 2 + genreH) / 2){
+        data = loadStrings("quiz.txt");
+        newData();
+        println("1");
+      }else{
+        data = loadStrings("quiz.txt");
+        newData();
+        println("3");
+      }
+    }else if(  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW){
+      if((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH){
+        data = loadStrings("quiz.txt");
+        newData();
+        println("4");
+      }else{
+        data = loadStrings("quiz.txt");
+        newData();
+        println("2");
+      }
     } else {
       data = loadStrings("quiz.txt");
       newData();
