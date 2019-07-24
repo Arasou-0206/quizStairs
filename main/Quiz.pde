@@ -79,7 +79,7 @@ class Quiz {
   }
 
   void isButtonPushed() {
-    if (isPush == 0) {
+    if (isPush == 0 || isPush == 3) {
       int w = 75, h = 50;
       int tx = width/6 - w/2, ty = height * 4/5 - 25 - w/2;
       int fx = width *5/6 - h/2, fy = height * 4/5 - 25/2 -5 - h/2;
@@ -152,6 +152,7 @@ class Quiz {
     }
     text(int(n) + ":" + question[num[qCount]], 30, height/3);
   }
+  
   int quiz1(int time) {
     quizWindow();
     quizTimer(time);
