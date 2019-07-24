@@ -33,6 +33,10 @@ int judge;
 int done = 0, isPush = 0; //押せるか押せないか
 int mcnt = 0;
 
+int gn = 2;
+int bx = int(random(300, width - 300));
+int by = int(random(300, width - 300));
+int clicker = int(n)*3;
 
 String[] data = null;//データ読み込み
 String[] question;//クイズ問題格納
@@ -62,12 +66,6 @@ PVector nOffset1, nOffset2;
 float nScale = 0.007;
 float tScale = 0.03;
 float step = 3.0;
-
-int br = 300;
-int bx = int(random(300, width - 300));
-int by = int(random(300, width - 300));
-int bsX = 5; 
-int bsY = 5;
 
 //revue
 String fileName;
@@ -159,45 +157,29 @@ void draw() {
       Answer[4].pause();
       Answer[4].rewind();
       judge = -1;
+      if (done == 0) {
+        done = 1;
+        isPush = int(random(0, gn+1));
+      }
       if (n == 1) {
         judge = q.quiz1(quizLimit);
       } else if (n == 2) {
         judge = q.quiz2(quizLimit);
       } else if (n == 3) {
-        if (done == 0) {
-          done = 1;
-          isPush = 1;
-        }
         judge = q.quiz3(quizLimit);
       } else if (n == 4) {
-        if (done == 0) {
-          done = 1;
-          isPush = 1;
-        }
         judge = q.quiz4(quizLimit);
       } else if (n == 5) {
         judge = q.quiz5(quizLimit);
       } else if (n == 6) {
         judge = q.quiz6(quizLimit);
       } else if (n == 7) {
-        if (done == 0) {
-          done = 1;
-          isPush = 1;
-        }
         judge = q.quiz7(quizLimit);
       } else if (n == 8) {
-        if (done == 0) {
-          done = 1;
-          isPush = 1;
-        }
         judge = q.quiz8(quizLimit);
       } else if (n == 9) {
         judge = q.quiz9(quizLimit);
       } else if (n == 10) {
-        if (done == 0) {
-          done = 1;
-          isPush = 1;
-        }
         judge = q.quiz10(quizLimit);
       }
       q.gimmick();
@@ -237,13 +219,20 @@ void keyPressed() {
   } else if (keyCode == DOWN) {
     n --;
     reset();
-  } else if (key == 'd') {
+  } else if (key == '0') {
     isPush = 0;
-  } else if (key == 'D') {
+  } else if (key == '1') {
     isPush = 1;
+  } else if (key == '2') {
+    isPush = 2;
   } else if (key == 'b') {
     scene = 4;
   }
+}
+
+void mouseClicked() {
+  if (isPush == 1) q.isClear();
+  if (isPush == 2) clicker --;
 }
 
 void mousePressed() {
@@ -252,14 +241,13 @@ void mousePressed() {
     q.isButtonPushed();
     game = 0;
   }
-  if (isPush == 1) q.isClear();
   if (scene == 0) {
     if (o.pushGenre() == true) {
       scene = 7;
     } else {
       scene++;
     }
-  } else if (1 <= scene&& scene <= 2) {
+  } else if (1 <= scene && scene <= 2) {
     scene ++;
   } else if (scene == 3) {
     if (game == 0 && n <= stairs) game = 1;
@@ -335,11 +323,12 @@ void reset() {
   isPush = 0;
   quizLimit = sec;
   mcnt = 0;
-  br = 300 - 28*int(n);
-  bx = int(random(300, width - 300));
-  by = int(random(300, width - 300));
   Answer[3].pause();
   Answer[3].rewind();
+
+  bx = int(random(300, width - 300));
+  by = int(random(300, width - 300));
+  clicker = int(n)*3;
 }
 
 void stop() {

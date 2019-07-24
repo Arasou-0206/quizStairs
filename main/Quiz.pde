@@ -1,16 +1,19 @@
 class Quiz {
   int flag = -1;
+  int br;
+  int bsX = 5; 
+  int bsY = 5;
 
   void quizTimer(int t) {
     smooth();
     stroke(1);
-    fill(255,255,0);
-    rect(width - 255, 30, 250,48,30);
+    fill(255, 255, 0);
+    rect(width - 255, 30, 250, 48, 30);
     noStroke();
     fill(255);
-    rect(width-30,40,-200,25,30);
+    rect(width-30, 40, -200, 25, 30);
     fill(255, 0, 255);
-    rect(width-30, 40, -t*20, 25,30);
+    rect(width-30, 40, -t*20, 25, 30);
   }
 
   void button() {
@@ -94,21 +97,33 @@ class Quiz {
   }
 
   void gimmick() {
-    if (isPush == 1) {
+    br = 300 - 28*int(n);
+      textSize(28);
+      if(isPush == 0){
+      fill(255);
+      text("○か×か、正解だと思う方を押そう！", 30, height/5);
+      }else if (isPush == 1) {
       fill(255, 200, 150);
       ellipse(bx, by, br, br);
+      fill(255);
+      text("ボールをクリックで消さないとボタンが押せない！", 30, height/5);
+      
       if (bx < br / 2 || bx > width - br / 2) {
         bsX *= -1;
       }
       if (by < br / 2 || by > height - br / 2) {
         bsY *= -1;
       }
-        bx += bsX;
-        by += bsY;
-      }
+      bx += bsX;
+      by += bsY;
+    } else if(isPush == 2){
+      fill(255);
+      text(clicker + "回 画面をクリックしないとボタンが押せない！", 30, height/5);
+      if(clicker <= 0) isPush = 0;
+    }
   }
-  
-  void isClear(){
+
+  void isClear() {
     if ((mouseX-bx)*(mouseX-bx) + (mouseY-by)*(mouseY-by) <= br*br) isPush = 0;
   }
 
@@ -117,9 +132,9 @@ class Quiz {
     background(255);
     noStroke();
     fill(30, 0, 156);
-    rect(5, 5, width - 10, height * 4/5-50,10);
+    rect(5, 5, width - 10, height * 4/5-50, 10);
     fill(250, 225, 0);
-    rect(10, height / 3, width - 20, 50,10);
+    rect(10, height / 3, width - 20, 50, 10);
   }
 
   void questionText() {
