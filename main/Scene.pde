@@ -8,7 +8,7 @@ class Scene {
   int revueY  = height - 160;
   int revueW = 120;
   int revueH  = 40;
-  
+  int select = 1;
 
   void scene(int s) {
     data = loadStrings("ending.txt"); 
@@ -86,7 +86,7 @@ class Scene {
         text("Click to Restart", width*3/4-55, height-30);
         fill(0, 255, 255);
         rectMode(CENTER);
-        rect(revueX, revueY, revueW, revueH,2);
+        rect(revueX, revueY, revueW, revueH, 2);
         rectMode(CORNER);
         fill(0);
         text("レビュー", revueX - revueW / 2, revueY - revueH / 2);
@@ -113,18 +113,57 @@ class Scene {
       saveStrings( fileName, item);
       fill(255);
       rectMode(CENTER);
-      rect(revueX , height / 2 + 80, 100, 50,5);
+      rect(revueX, height / 2 + 80, 100, 50, 5);
       fill(0); 
       text("送信", revueX - 30, height / 2 + 65);
       rectMode(CORNER);
-    } else if(s == 7){
+    } else if (s == 7) {
     }
   }
-  int push() {
+  boolean pushRevue() {
     if (revueX - revueW / 2 <= mouseX&& revueX + revueW / 2 >= mouseX&& mouseY >= revueY - revueH / 2 && mouseY <= revueY + revueH / 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  boolean pushGenre() {
+    return true;
+  }
+
+  int loadData() {
+    if (select == 1) {
+      data = loadStrings("quiz.txt");
+      newData();
       return 1;
     } else {
-      return 0;
+      return 3;
+    }
+  }
+
+  void newData() {
+    quesTime = 0;
+    ansTime = 0;
+    qCount = 0;
+    
+    if (data == null) {
+      print("開発者に問い合わせてください");
+      exit();
+    }
+    question = new String[data.length / 2];
+    answer   = new int[data.length / 2];
+    for (int i = 0; i < data.length; i++) {
+      if (i % 2 == 0) {
+        question[ansTime] = data[i];
+        quesTime++;
+      } else {
+        answer[ansTime] = int(data[i]);
+        if (answer[ansTime] == 0) {
+          t++;
+        }
+        ansTime++;
+      }
     }
   }
 }

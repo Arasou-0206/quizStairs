@@ -119,13 +119,13 @@ void setup() {
   Answer[2] = minim.loadFile("BGM/info-girl1-zannen1.mp3");
   Answer[3] = minim.loadFile("BGM/plane-cloud.mp3");
   Answer[4] = minim.loadFile("BGM/wind1.mp3");
-  
-  
+
+
   // SmoothCanvasの親の親にあたるJLayeredPaneを取得
   Canvas canvas = (Canvas) surface.getNative();
   pane = (JLayeredPane) canvas.getParent().getParent();
-  
-    // 複数行のテキストボックスを作成
+
+  // 複数行のテキストボックスを作成
   area = new JTextArea();
   area.setLineWrap(true);
   area.setWrapStyleWord(true);
@@ -240,7 +240,7 @@ void keyPressed() {
     isPush = 0;
   } else if (key == 'D') {
     isPush = 1;
-  } else if (key == 'b'){
+  } else if (key == 'b') {
     scene = 4;
   }
 }
@@ -252,12 +252,18 @@ void mousePressed() {
     game = 0;
   }
   if (isPush == 1) q.isClear();
-  if (scene <= 2) {
+  if (scene == 0) {
+    if (o.pushGenre() == true) {
+      scene = 7;
+    } else {
+      scene++;
+    }
+  } else if (1 <= scene&& scene <= 2) {
     scene ++;
   } else if (scene == 3) {
     if (game == 0 && n <= stairs) game = 1;
   } else if (scene == 4) {
-    if (o.push() == 1) {
+    if (o.pushRevue() == true) {
       scrollPane.setBounds(width / 2 - 100, height / 2 - 50, 200, 100);
       pane.add(scrollPane);
       scene = 6;
@@ -278,7 +284,10 @@ void mousePressed() {
     reset();
     n = 1;
     scene = 0;
-  } else if (scene == 7){
+  } else if (scene == 7) {
+    if (o.loadData() == 1) {
+      scene = 1;
+    }
   }
   if (scene == 3 && n == 0) {
     reset();
