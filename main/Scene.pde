@@ -147,7 +147,7 @@ class Scene {
       fill(0);
       line((genreX * 2 + genreW) / 2, genreY,(genreX  * 2+ genreW) / 2 , genreY + genreH);
       line(genreX, (genreY * 2 + genreH) / 2, genreW + genreX, (genreY * 2 + genreH) / 2);
-
+      
       fill(255);
       textSize(60);
       text("ジャンルを選択してね！", 50, 0);
@@ -187,7 +187,7 @@ class Scene {
         newData();
         println("4");
       }else{
-        data = loadStrings("quiz.txt");
+        data = loadStrings("animal.txt");
         newData();
         println("2");
       }
@@ -220,5 +220,6 @@ class Scene {
         ansTime++;
       }
     }
+    num = number(data.length / 2 - 1);
   }
 }
