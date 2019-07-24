@@ -33,6 +33,7 @@ int judge;
 int done = 0, isPush = 0; //押せるか押せないか
 int mcnt = 0;
 
+
 String[] data = null;//データ読み込み
 String[] question;//クイズ問題格納
 int quesTime = 0;
@@ -285,9 +286,7 @@ void mousePressed() {
     n = 1;
     scene = 0;
   } else if (scene == 7) {
-    if (o.loadData() == 1) {
-      scene = 1;
-    }
+    o.loadData();
   }
   if (scene == 3 && n == 0) {
     reset();

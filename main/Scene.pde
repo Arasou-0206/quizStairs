@@ -8,11 +8,12 @@ class Scene {
   int revueY  = height - 160;
   int revueW = 120;
   int revueH  = 40;
-  int select = 1;
-  
-  int genreX = width *4/5;
-  int genreY = height *4/5;
-  
+
+  int genreX = 30;
+  int genreY = 80;
+  int genreW = width - genreX * 2;
+  int genreH = height - 80;
+
   void scene(int s) {
     data = loadStrings("ending.txt"); 
     background(255);
@@ -32,8 +33,6 @@ class Scene {
       if ((mcnt % 60) < 30) {
         text("Mouse Click", 240, 360);
       }
-      fill(0);
-      rect(genreX, genreY,100,30);
     }
     if (s == 1) {
       mcnt++;
@@ -123,30 +122,26 @@ class Scene {
       text("送信", revueX - 30, height / 2 + 65);
       rectMode(CORNER);
     } else if (s == 7) {
-      
-      fill(255,165,0);
-      rect(0,0,width,height);
-      fill(255,225,0);
-      rect(30,80,width-60,height-90,10);
-      
+
+      background(255, 165, 0);
+      fill(255, 225, 0);
+      rect(genreX, genreY, genreW, genreH, 10);
+
       fill(0);
-      line(width/3,80,width/3,height-10);
-      line(width*2/3,80,width*2/3,height-10);
-      line(30,height/2+30,width-30,height/2+30);
-      
+      line((genreX + genreW) / 2, genreY,(genreX + genreW) / 2 , genreH);
+      line(width*2/3, 80, width*2/3, height-10);
+
       fill(255);
       textSize(60);
-      text("ジャンルを選択してね！",50,0);
+      text("ジャンルを選択してね！", 50, 0);
       fill(0);
-      textMode(CENTER);
       textSize(30);
-      text("オール",40,90);
-      text("食べ物",width/3+10,90);
-      text("学問",width*2/3+10,90);
-      text("SCANDAL",40,height/2+40);
-      text("SCANDAL",width/3+10,height/2+40);
-      text("SCANDAL",width*2/3+10,height/2+40);
-      textMode(CORNER);
+      text("オール", 40, 90);
+      text("食べ物", width/3+10, 90);
+      text("学問", width*2/3+10, 90);
+      text("SCANDAL", 40, height/2+40);
+      text("SCANDAL", width/3+10, height/2+40);
+      text("SCANDAL", width*2/3+10, height/2+40);
     }
   }
   boolean pushRevue() {
@@ -158,21 +153,21 @@ class Scene {
   }
 
   boolean pushGenre() {
-    if(genreX <= mouseX && mouseX <= genreX + 100){
-      if(genreY <= mouseY && mouseY <= genreY + 30){
+    if (genreX <= mouseX && mouseX <= genreX + 100) {
+      if (genreY <= mouseY && mouseY <= genreY + 30) {
         return true;
       }
     }
     return false;
   }
 
-  int loadData() {
-    if (select == 1) {
+  void loadData() {
+    if (true) {
       data = loadStrings("quiz.txt");
       newData();
-      return 1;
     } else {
-      return 3;
+      data = loadStrings("quiz.txt");
+      newData();
     }
   }
 
@@ -180,7 +175,7 @@ class Scene {
     quesTime = 0;
     ansTime = 0;
     qCount = 0;
-    
+
     if (data == null) {
       print("開発者に問い合わせてください");
       exit();
