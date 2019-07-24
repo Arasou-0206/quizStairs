@@ -9,7 +9,10 @@ class Scene {
   int revueW = 120;
   int revueH  = 40;
   int select = 1;
-
+  
+  int genreX = width *4/5;
+  int genreY = height *4/5;
+  
   void scene(int s) {
     data = loadStrings("ending.txt"); 
     background(255);
@@ -29,6 +32,8 @@ class Scene {
       if ((mcnt % 60) < 30) {
         text("Mouse Click", 240, 360);
       }
+      fill(0);
+      rect(genreX, genreY,100,30);
     }
     if (s == 1) {
       mcnt++;
@@ -93,7 +98,7 @@ class Scene {
       } else {
         move -= 30;
       }
-    } else if (s == 7) {
+    } else if (s == 5) {
       mcnt++;
       fill(255, 100, 50);
       img = loadImage("image/haka.png");
@@ -118,6 +123,7 @@ class Scene {
       text("送信", revueX - 30, height / 2 + 65);
       rectMode(CORNER);
     } else if (s == 7) {
+      
       fill(255,165,0);
       rect(0,0,width,height);
       fill(255,225,0);
@@ -132,13 +138,15 @@ class Scene {
       textSize(60);
       text("ジャンルを選択してね！",50,0);
       fill(0);
+      textMode(CENTER);
       textSize(30);
       text("オール",40,90);
       text("食べ物",width/3+10,90);
       text("学問",width*2/3+10,90);
-      text("SCANDAL",40,width/2+40);
-      text("SCANDAL",width/3+10,width/2+40);
-      text("SCANDAL",width*2/3+10,width/2+40);
+      text("SCANDAL",40,height/2+40);
+      text("SCANDAL",width/3+10,height/2+40);
+      text("SCANDAL",width*2/3+10,height/2+40);
+      textMode(CORNER);
     }
   }
   boolean pushRevue() {
@@ -150,7 +158,12 @@ class Scene {
   }
 
   boolean pushGenre() {
-    return true;
+    if(genreX <= mouseX && mouseX <= genreX + 100){
+      if(genreY <= mouseY && mouseY <= genreY + 30){
+        return true;
+      }
+    }
+    return false;
   }
 
   int loadData() {
