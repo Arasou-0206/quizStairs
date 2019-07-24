@@ -120,6 +120,11 @@ class Quiz {
       fill(255);
       text(clicker + "回 画面をクリックしないとボタンが押せない！", 30, height/5);
       if(clicker <= 0) isPush = 0;
+    } else if(isPush == 3){
+      if(timer%30 != 0){
+        background(0);
+        button();
+      }
     }
   }
 
