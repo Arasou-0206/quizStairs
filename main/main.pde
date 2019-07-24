@@ -33,7 +33,7 @@ int judge;
 int done = 0, isPush = 0; //押せるか押せないか
 int mcnt = 0;
 
-int gn = 2;
+int gn = 3;
 int bx = int(random(300, width - 300));
 int by = int(random(300, width - 300));
 int clicker = int(n)*3;
@@ -225,6 +225,8 @@ void keyPressed() {
     isPush = 1;
   } else if (key == '2') {
     isPush = 2;
+  }else if(key == '3'){
+    isPush = 3;
   } else if (key == 'b') {
     scene = 4;
   }
