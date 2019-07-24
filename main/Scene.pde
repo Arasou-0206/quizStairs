@@ -117,6 +117,7 @@ class Scene {
       fill(0); 
       text("送信", revueX - 30, height / 2 + 65);
       rectMode(CORNER);
+    } else if(s == 7){
     }
   }
   int push() {

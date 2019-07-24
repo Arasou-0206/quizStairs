@@ -278,6 +278,7 @@ void mousePressed() {
     reset();
     n = 1;
     scene = 0;
+  } else if (scene == 7){
   }
   if (scene == 3 && n == 0) {
     reset();
