@@ -190,8 +190,8 @@ class Scene {
   }
 
   boolean pushGenre() {
-    if (genreButtonX <= mouseX && mouseX <= genreButtonX + 100) {
-      if (genreButtonY <= mouseY && mouseY <= genreButtonY + 30) {
+    if (genreButtonX <= mouseX && mouseX <= genreButtonX + 180 &&
+        genreButtonY <= mouseY && mouseY <= genreButtonY + 40) {
         return true;
       }
     }
