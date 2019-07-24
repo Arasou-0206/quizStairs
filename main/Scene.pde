@@ -117,10 +117,7 @@ class Scene {
       fill(0); 
       text("送信", revueX - 30, height / 2 + 65);
       rectMode(CORNER);
-<<<<<<< HEAD
     } else if (s == 7) {
-=======
-    } else if(s == 5){
       fill(255,165,0);
       rect(0,0,width,height);
       fill(255,225,0);
@@ -142,7 +139,6 @@ class Scene {
       text("SCANDAL",40,width/2+40);
       text("SCANDAL",width/3+10,width/2+40);
       text("SCANDAL",width*2/3+10,width/2+40);
->>>>>>> a6db201a3b340199e2d669860ed39f8827b99727
     }
   }
   boolean pushRevue() {
