@@ -61,7 +61,7 @@ color c2 = color(0, 255, 255);
 PVector nOffset1, nOffset2;
 float nScale = 0.007;
 float tScale = 0.03;
-float step = 5.0;
+float step = 3.0;
 
 int br = 300;
 int bx = int(random(300, width - 300));
