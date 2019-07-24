@@ -139,11 +139,8 @@ class Scene {
       text("送信", revueX - 30, height / 2 + 65);
       rectMode(CORNER);
     } else if (s == 7) {
-
       background(255, 165, 0);
-      fill(255, 225, 0);
-      rect(genreX, genreY, genreW, genreH, 10);
-      /*if (genreX <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 ) {
+      if (genreX <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 ) {
         if (genreY <= mouseY && mouseY <= (genreY * 2 + genreH) / 2) {
           fill(255,255,0);
         } else {
@@ -157,10 +154,16 @@ class Scene {
         }
       } else {
         fill(255,165,0);
-      }*/
+      }
+      int gW = (genreX * 2 + genreW) / 2 - 20;
+      int gH =  (genreY * 2 + genreH) / 2 - 20;
+      rect(genreX - 10, genreY, gW,gH);
+      rect(((genreX * 2 + genreW) / 2),genreY,gW,gH);
+      rect(genreX - 10,(genreY * 2 + genreH) / 2,gW,gH - 60);
+      rect((genreX * 2 + genreW) / 2,(genreY * 2 + genreH) / 2,gW,gH - 60);
       fill(0);
-      line((genreX * 2 + genreW) / 2, genreY, (genreX  * 2+ genreW) / 2, genreY + genreH);
-      line(genreX, (genreY * 2 + genreH) / 2, genreW + genreX, (genreY * 2 + genreH) / 2);
+      //line((genreX * 2 + genreW) / 2, genreY, (genreX  * 2+ genreW) / 2, genreY + genreH);
+      //line(genreX, (genreY * 2 + genreH) / 2, genreW + genreX, (genreY * 2 + genreH) / 2);
       text("ランダム", (((genreX * 2 + genreW) / 2)  / 2) - 100, ((((genreY * 2 + genreH) / 2) + genreY) / 2 ) - 30);
       text("生き物", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 90, ((((genreY * 2 + genreH) / 2) + genreY) / 2) - 30);
       text("食べ物", (((genreX * 2 + genreW) / 2)  / 2) - 70, ((((genreY * 2 + genreH) / 2) + genreY + genreH) / 2 ) - 30);
