@@ -13,10 +13,10 @@ class Scene {
   int genreY = 80;
   int genreW = width - genreX * 2;
   int genreH = height - genreY - 10 ;
-  
+
   int genreButtonX = width -190;
   int genreButtonY = height -45;
-  
+
   void scene(int s) {
     data = loadStrings("ending.txt"); 
     background(255);
@@ -39,16 +39,16 @@ class Scene {
 
 
       textSize(30);
-      if(genreButtonX < mouseX && genreButtonY < mouseY){
-        fill(255,120,0);
-        rect(genreButtonX, genreButtonY,180,40);
-        fill(255);
-        text("ジャンル選択",width-185,height-40);
-      }else{
-        fill(255,80,0);
-        rect(genreButtonX, genreButtonY,180,40);
+      if (genreButtonX < mouseX && genreButtonY < mouseY) {
+        fill(255, 255, 0);
+        rect(genreButtonX, genreButtonY, 180, 40);
         fill(0);
-        text("ジャンル選択",width-185,height-40);
+        text("ジャンル選択", width-185, height-40);
+      } else {
+        fill(255, 165, 0);
+        rect(genreButtonX, genreButtonY, 180, 40);
+        fill(0);
+        text("ジャンル選択", width-185, height-40);
       }
     }
     if (s == 1) {
@@ -143,11 +143,28 @@ class Scene {
       background(255, 165, 0);
       fill(255, 225, 0);
       rect(genreX, genreY, genreW, genreH, 10);
-
+      /*if (genreX <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 ) {
+        if (genreY <= mouseY && mouseY <= (genreY * 2 + genreH) / 2) {
+          fill(255,255,0);
+        } else {
+          fill(255,255,0);
+        }
+      } else if (  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW) {
+        if ((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH) {
+          fill(255, 255, 0);
+        } else {
+          fill(255, 255, 0);
+        }
+      } else {
+        fill(255,165,0);
+      }*/
       fill(0);
-      line((genreX * 2 + genreW) / 2, genreY,(genreX  * 2+ genreW) / 2 , genreY + genreH);
+      line((genreX * 2 + genreW) / 2, genreY, (genreX  * 2+ genreW) / 2, genreY + genreH);
       line(genreX, (genreY * 2 + genreH) / 2, genreW + genreX, (genreY * 2 + genreH) / 2);
-      
+      text("ランダム", (((genreX * 2 + genreW) / 2)  / 2) - 100, ((((genreY * 2 + genreH) / 2) + genreY) / 2 ) - 30);
+      text("生き物", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 90, ((((genreY * 2 + genreH) / 2) + genreY) / 2) - 30);
+      text("食べ物", (((genreX * 2 + genreW) / 2)  / 2) - 70, ((((genreY * 2 + genreH) / 2) + genreY + genreH) / 2 ) - 30);
+      text("道具", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 60, ((((genreY * 2 + genreH) / 2) + genreY + genreH) / 2 ) - 30);
       fill(255);
       textSize(60);
       text("ジャンルを選択してね！", 50, 0);
@@ -162,8 +179,8 @@ class Scene {
   }
 
   boolean pushGenre() {
-    if(genreButtonX <= mouseX && mouseX <= genreButtonX + 100){
-      if(genreButtonY <= mouseY && mouseY <= genreButtonY + 30){
+    if (genreButtonX <= mouseX && mouseX <= genreButtonX + 100) {
+      if (genreButtonY <= mouseY && mouseY <= genreButtonY + 30) {
         return true;
       }
     }
@@ -172,21 +189,21 @@ class Scene {
 
   void loadData() {
     if (genreX <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 ) {
-      if(genreY <= mouseY && mouseY <= (genreY * 2 + genreH) / 2){
+      if (genreY <= mouseY && mouseY <= (genreY * 2 + genreH) / 2) {
         data = loadStrings("quiz.txt");
         newData();
         println("1");
-      }else{
+      } else {
         data = loadStrings("quiz.txt");
         newData();
         println("3");
       }
-    }else if(  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW){
-      if((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH){
+    } else if (  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW) {
+      if ((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH) {
         data = loadStrings("quiz.txt");
         newData();
         println("4");
-      }else{
+      } else {
         data = loadStrings("animal.txt");
         newData();
         println("2");
