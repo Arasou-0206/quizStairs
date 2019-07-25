@@ -212,7 +212,7 @@ class Scene {
       }
     } else if (  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW) {
       if ((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH) {
-        data = loadStrings("item.txt");
+        data = loadStrings("history.txt");
         newData();
         println("4");
       } else {
