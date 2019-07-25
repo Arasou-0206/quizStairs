@@ -39,7 +39,7 @@ class Scene {
 
 
       textSize(30);
-      if (genreButtonX < mouseX && genreButtonY < mouseY) {
+      if (genreButtonX < mouseX && mouseX < width - 10 && genreButtonY < mouseY && mouseY < height - 2) {
         fill(255, 255, 0);
         rect(genreButtonX, genreButtonY, 180, 40);
         fill(0);
@@ -116,16 +116,18 @@ class Scene {
       }
     } else if (s == 5) {
       mcnt++;
-      fill(255, 100, 50);
+      background(170,120,0);
       img = loadImage("image/haka.png");
       image(img, 0, 0, width/2, height);
       textSize(80);
-      text("残念！！", width/2, 30);
+      fill(255,70,0);
+      text("残念ッ！！", width/2-60, 30);
       textSize(30);
+      fill(255, 150, 50);
       text("あなたは道半ばで", width/2, height/2 - 30);
       text("息絶えてしまったようだ・・・", width/2-60, height/2);
       if ((mcnt % 60) < 20) {
-        text("Click to Retry", width*3/4 - 100, height-35);
+        text("Click to Retry", width*3/4 - 40, height-35);
       }
     } else if (s == 6) {
       image(nightSea, 0, 0, width, height);
