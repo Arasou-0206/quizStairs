@@ -98,7 +98,7 @@ class Scene {
       for (int i = 0; i < data.length-1; i++) {
 
         text(data[i], x, y);
-        y += 30;
+        y += 1;
       }
       textSize(50);
       text(data[data.length-1], 0, y);
@@ -177,7 +177,7 @@ class Scene {
       text("ランダム", (((genreX * 2 + genreW) / 2)  / 2) - 100, ((((genreY * 2 + genreH) / 2) + genreY) / 2 ) - 30);
       text("生き物", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 90, ((((genreY * 2 + genreH) / 2) + genreY) / 2) - 30);
       text("食べ物", (((genreX * 2 + genreW) / 2)  / 2) - 70, ((((genreY * 2 + genreH) / 2) + genreY + genreH) / 2 ) - 30);
-      text("道具", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 60, ((((genreY * 2 + genreH) / 2) + genreY + genreH) / 2 ) - 30);
+      text("歴史", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 60, ((((genreY * 2 + genreH) / 2) + genreY + genreH) / 2 ) - 30);
       fill(255);
       textSize(60);
       text("ジャンルを選択してね！", 50, 0);
