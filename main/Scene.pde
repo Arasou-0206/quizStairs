@@ -145,7 +145,7 @@ class Scene {
       int gW = (genreX * 2 + genreW) / 2 - 20;
       int gH =  (genreY * 2 + genreH) / 2 - 80;
 
-      if (genreX <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 ) {
+      if (genreX - 10 <= mouseX && mouseX <= (genreX * 2 + genreW) / 2 + 10 && genreY < mouseY && mouseY < (genreY + (gH*2))) {
         if (genreY <= mouseY && mouseY <= (genreY * 2 + genreH) / 2) {
           fill(255, 255, 0);
           rect(genreX - 10, genreY, gW, gH);
@@ -153,7 +153,7 @@ class Scene {
           fill(255, 255, 0);
           rect(genreX - 10, (genreY * 2 + genreH) / 2, gW, gH );
         }
-      } else if (  (genreX * 2 + genreW) / 2 < mouseX && mouseX <= genreX + genreW) {
+      } else if (  (genreX * 2 + genreW) / 2 - 10 < mouseX && mouseX <= genreX + genreW + 10 && genreY < mouseY && mouseY < (genreY + (gH * 2))) {
         if ((genreY * 2 + genreH) / 2 <= mouseY && mouseY <= genreY + genreH) {
           fill(255, 255, 0);
           rect((genreX * 2 + genreW) / 2, (genreY * 2 + genreH) / 2, gW, gH);
