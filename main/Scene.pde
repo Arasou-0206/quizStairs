@@ -167,10 +167,10 @@ class Scene {
         rect((genreX * 2 + genreW) / 2, (genreY * 2 + genreH) / 2, gW, gH);
       }
       fill(0);
-      line((genreX * 2 + genreW) / 2, genreY,(genreX  * 2+ genreW) / 2 , genreY + genreH);
-      line(genreX - 10, (genreY * 2 + genreH) / 2, genreW + genreX , (genreY * 2 + genreH) / 2);
+      line((genreX * 2 + genreW) / 2, genreY, (genreX  * 2+ genreW) / 2, genreY + genreH);
+      line(genreX - 10, (genreY * 2 + genreH) / 2, genreW + genreX, (genreY * 2 + genreH) / 2);
       noFill();
-      rect(genreX - 10,genreY ,genreX+genreW - 10,genreY+genreH - 80);
+      rect(genreX - 10, genreY, genreX+genreW - 10, genreY+genreH - 80);
       fill(0);
       text("ランダム", (((genreX * 2 + genreW) / 2)  / 2) - 100, ((((genreY * 2 + genreH) / 2) + genreY) / 2 ) - 30);
       text("生き物", ((((genreX * 2 + genreW) / 2) + genreX + genreW) / 2) - 90, ((((genreY * 2 + genreH) / 2) + genreY) / 2) - 30);
@@ -191,9 +191,8 @@ class Scene {
 
   boolean pushGenre() {
     if (genreButtonX <= mouseX && mouseX <= genreButtonX + 180 &&
-        genreButtonY <= mouseY && mouseY <= genreButtonY + 40) {
-        return true;
-      }
+      genreButtonY <= mouseY && mouseY <= genreButtonY + 40) {
+      return true;
     }
     return false;
   }
