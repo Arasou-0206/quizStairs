@@ -121,7 +121,7 @@ class Scene {
       image(img, 0, 0, width/2, height);
       textSize(80);
       fill(255,70,0);
-      text("残念ッ！！", width/2-60, 30);
+      text("残念！！", width/2-60, 30);
       textSize(30);
       fill(255, 150, 50);
       text("あなたは道半ばで", width/2, height/2 - 30);
