@@ -121,10 +121,16 @@ class Quiz {
       text(clicker + "回 画面をクリックしないとボタンが押せない！", 30, height/5);
       if(clicker <= 0) isPush = 0;
     } else if(isPush == 3){
-      if(timer%30 != 0){
-        background(0);
-        button();
+      if(timer%10 != 0){
+        noStroke();
+        fill(30, 0, 156);
+        rect(5, 5, width - 10, height * 4/5-50, 10);
       }
+      fill(255);
+      text("○か×か、正解だと思う方を押そう！", 30, height/5);
+      textSize(20);
+      text("点滅はバグではありません。", width/2, height/5 + 40);
+      button();
     }
   }
 
