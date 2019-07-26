@@ -98,7 +98,7 @@ class Scene {
       for (int i = 0; i < data.length-1; i++) {
 
         text(data[i], x, y);
-        y += 1;
+        y += 30;
       }
       textSize(50);
       text(data[data.length-1], 0, y);
@@ -112,7 +112,7 @@ class Scene {
         fill(0);
         text("レビュー", revueX - revueW / 2, revueY - revueH / 2);
       } else {
-        move -= 30;
+        move -= 3;
       }
     } else if (s == 5) {
       mcnt++;
