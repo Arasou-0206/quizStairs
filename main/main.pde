@@ -134,7 +134,11 @@ void setup() {
 }
 
 void draw() {
+  if(qCount >= answer.length-1){
+    qCount = 0;
+  }
   o.scene(scene);
+  println(qCount);
   if (scene == 3) {
     time();
     if (n == 0) {
